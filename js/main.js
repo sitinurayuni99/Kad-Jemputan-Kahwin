@@ -84,14 +84,14 @@ function setupCountdown(campaignSelector, startTimeMillis, endTimeMillis) {
     setInterval(countdown, 1000);
 }
 
-document.addEventListener("DOMContentLoaded", function (event) {
-    if (!document.querySelectorAll || !document.body.classList) {
-        return;
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    // Wedding: 7 September 2025, 10:00 AM – 3:00 PM MYT (UTC+8)
+    // Converted to UTC: 2:00 AM – 7:00 AM
+    var start = new Date("2025-09-07T02:00:00Z").getTime();
+    var end = new Date("2025-09-07T07:00:00Z").getTime();
 
+    setupCountdown(".campaign-0", start, end);
 });
-
-setupCountdown(".campaign-0", new Date().getMilliseconds(), 1924920000000);
 
 
 
@@ -104,7 +104,7 @@ const event = {
     title: "Jemputan Kenduri Kahwin Ayuni & Azim",
     startDate: "20250907T020000Z", // YYYYMMDDTHHmmssZ (UTC)
     endDate: "20250907T070000Z",
-    location: "Lot 3238 B, Kg Paya Jaras Dalam, 47000 Sg Buloh, Selangor, Malaysia",
+    location: "Lot 3238, Jalan Khalifah Zakaria, Kg Paya Jaras Dalam, 47000 Sg Buloh, Selangor, Malaysia",
     description: "Kami menjemput tuan/puan hadir ke majlis perkahwinan anakanda kami.",
 };
 
