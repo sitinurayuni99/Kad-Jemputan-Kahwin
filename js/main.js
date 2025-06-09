@@ -101,10 +101,10 @@ setupCountdown(".campaign-0", new Date().getMilliseconds(), 1924920000000);
  *  Add to Calendar
   ======================================================= */
 const event = {
-    title: "Jemputan Kenduri Kahwin John & Sarah",
-    startDate: "99991231T033000Z", // YYYYMMDDTHHmmssZ (UTC)
-    endDate: "99991231T090000Z",
-    location: "10A Jalan Seri Ampang 2, Kampung Pisang, 47300 Subang, Selangor, Malaysia",
+    title: "Jemputan Kenduri Kahwin Ayuni & Azim",
+    startDate: "20250907T020000Z", // YYYYMMDDTHHmmssZ (UTC)
+    endDate: "20250907T070000Z",
+    location: "Lot 3238 B, Kg Paya Jaras Dalam, 47000 Sg Buloh, Selangor, Malaysia",
     description: "Kami menjemput tuan/puan hadir ke majlis perkahwinan anakanda kami.",
 };
 
@@ -196,7 +196,7 @@ function openWaze() {
     Contact
   ======================================================= */
 function openWhatsApp(phoneNumber) {
-    const message = "https://kad-jemputan-kahwin.vercel.app/\n\nHello, maaf menggangu. Saya ingin bertanyakan sesuatu berkenaan majlis perkahwinan ini.";
+    const message = "https://kad-jemputan-kahwin.vercel.app/\n\nHi, maaf menggangu. Saya ingin bertanyakan sesuatu berkenaan majlis perkahwinan ini.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");  // Opens WhatsApp in a new tab
 }
