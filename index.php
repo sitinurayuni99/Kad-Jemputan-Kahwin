@@ -83,13 +83,13 @@ if (mysqli_num_rows($query2) == 0) {
             <div class="content">
                 <img src="./images/bismillah.png" alt="" class="fade-top-1">
                 <p class="title fade-top-2">Walimatul urus</p>
-                <h2 class="fade-top-3">John</h2>
+                <h2 class="fade-top-3">Ayuni</h2>
                 <h2 class="fade-top-3">&</h2>
-                <h2 class="fade-top-3">Sarah</h2>
+                <h2 class="fade-top-3">Azim</h2>
                 <p class="date fade-top-4">
-                    <span>Sabtu</span>
+                    <span>Ahad</span>
                     <span>|</span>
-                    <span>31 December 9999</span>
+                    <span>07 September 2025</span>
                 </p>
             </div>
         </section>
@@ -102,30 +102,30 @@ if (mysqli_num_rows($query2) == 0) {
                     <p>Dengan penuh kesyukuran</p>
                     <p>kami</p>
                     <div class="parent">
-                        <p>Ali Bin Abu</p>
+                        <p>Tamsir Bin M Zen</p>
                         <p>&</p>
-                        <p>Miya Binti Kasim</p>
+                        <p>Maziah Binti Mat Yusof</p>
                     </div>
                     <p>Menjemput</p>
                     <p>Dato' | Datin | Tuan | Puan | Encik | Cik</p>
                     <p>seisi keluarga hadir ke</p>
-                    <p>majlis perkahwinan putera kami</p>
+                    <p>majlis perkahwinan puteri kami</p>
                 </div>
                 <div class="two">
-                    <p>Muhamad John Bin Ali</p>
+                    <p>Siti Nur Ayuni Binti Tamsir</p>
                     <p>&</p>
-                    <p>Nur Sarah Binti Anwar</p>
+                    <p>Asyrowi Azim Bin Ahmad Asri</p>
                 </div>
                 <div class="three">
                     <p class="title">Tempat</p>
-                    <p>10A Jalan Seri Ampang 2</p>
-                    <p>Kampung Pisang</p>
-                    <p>47300 Subang, Selangor</p>
+                    <p>Lot 3238, Jalan Khalifah Zakaria</p>
+                    <p>Kg Paya Jaras Dalam</p>
+                    <p>47000 Sg Buloh, Selangor</p>
                 </div>
                 <div class="four">
                     <p class="title">Tarikh</p>
-                    <p>Sabtu, 31 December 9999</p>
-                    <p>Bersamaan 30 Zulhijjah 9999H</p>
+                    <p>Ahad, 07 September 2025</p>
+                    <p>Bersamaan 14 Rabi’ulawal 1447H</p>
                 </div>
                 <div class="five">
                     <p class="title">Masa</p>
@@ -174,7 +174,7 @@ if (mysqli_num_rows($query2) == 0) {
                 </div>
                 <div class="two">
                     <p>Ketibaan Pengantin</p>
-                    <p>1:00 Petang</p>
+                    <p>12:30 Petang</p>
                 </div>
                 <div class="three">
                     <p>Makan Beradab</p>
@@ -270,9 +270,9 @@ if (mysqli_num_rows($query2) == 0) {
         <div class="calendar">
             <h1>Calendar</h1>
             <p>
-                <span>31 December 9999</span>
+                <span>07 September 2025</span>
                 <span>|</span>
-                <span>30 Zulhijjah 9999H</span>
+                <span>14 Rabi’ulawal 1447H</span>
             </p>
             <div class="button">
                 <button class="google" onclick="addGoogleCalendar()">
@@ -290,9 +290,9 @@ if (mysqli_num_rows($query2) == 0) {
     <div id="location-menu" class="toggle-menu">
         <div class="location">
             <h1>Lokasi</h1>
-            <p>10A Jalan Seri Ampang 2</p>
-            <p>Kampung Pisang</p>
-            <p>47300 Subang, Selangor</p>
+            <p>Lot 3238, Jalan Khalifah Zakaria</p>
+            <p>Kg Paya Jaras Dalam</p>
+            <p>47000 Sg Buloh, Selangor</p>
             <div class="button" onclick="openGoogleMaps()">
                 <button class="google">
                     <i class='bx bxl-google'></i>
