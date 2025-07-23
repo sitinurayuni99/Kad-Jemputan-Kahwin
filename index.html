@@ -115,32 +115,41 @@
 
 <!-- Skrip Countdown -->
 <script>
-  // Tetapkan tarikh dan masa majlis
-  const countDownDate = new Date("September 7, 2025 11:00:00").getTime();
+  document.addEventListener("DOMContentLoaded", function () {
+    // Tetapkan tarikh dan masa majlis
+    const countDownDate = new Date("September 7, 2025 11:00:00").getTime();
 
-  // Kira masa setiap saat
- const countdownFunction = setInterval(function () {
-    const now = new Date().getTime();
-    const distance = countDownDate - now;
+    // Kira masa setiap saat
+    const countdownFunction = setInterval(function () {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Paparkan nilai ke elemen HTML
-    document.querySelector(".value.day").innerText = days;
-    document.querySelector(".value.hour").innerText = hours;
-    document.querySelector(".value.minute").innerText = minutes;
-    document.querySelector(".value.second").innerText = seconds;
+      const dayElem = document.querySelector(".value.day");
+      const hourElem = document.querySelector(".value.hour");
+      const minuteElem = document.querySelector(".value.minute");
+      const secondElem = document.querySelector(".value.second");
 
-    // Jika masa telah tiba
-    if (distance < 0) {
-      clearInterval(countdownFunction);
-      document.querySelector(".counter").innerHTML =
-        "<h2>Majlis Telah Bermula</h2>";
-    }
-  }, 1000);
+      if (dayElem && hourElem && minuteElem && secondElem) {
+        dayElem.innerText = days;
+        hourElem.innerText = hours;
+        minuteElem.innerText = minutes;
+        secondElem.innerText = seconds;
+      }
+
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        const counterBox = document.querySelector(".counter");
+        if (counterBox) {
+          counterBox.innerHTML = "<h2>Majlis Telah Bermula</h2>";
+        }
+      }
+    }, 1000);
+  });
 </script>
                              
             <!-- Aturcara -->
