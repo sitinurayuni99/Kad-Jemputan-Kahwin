@@ -172,17 +172,17 @@ function addAppleCalendar() {
  *  Location for Google and Waze
   ======================================================= */
 function openGoogleMaps() {
-    const latitude = 3.1575;  // Example latitude
-    const longitude = 101.7116;  // Example longitude
-    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}&travelmode=driving`;
+    const latitude = 3.226838;  // Example latitude
+    const longitude = 101.540180;  // Example longitude
+    const googleMapsUrl = `https://maps.app.goo.gl/BeboTh1RUroysBrE6`;
 
     window.open(googleMapsUrl, "_blank");  // Open in a new tab
 }
 
 function openWaze() {
-    const latitude = 3.1575;  // Example latitude
-    const longitude = 101.7116;  // Example longitude
-    //const wazeUrl = `https://waze.com/ul?ll=${latitude},${longitude}&navigate=yes`;
+    const latitude = 3.226838;  // Example latitude
+    const longitude = 101.540180;  // Example longitude
+    //const wazeUrl = `https://waze.com/ul?ll=3.199700,101.620800&navigate=yes`;
     const wazeUrl = `waze://?ll=${latitude},${longitude}&navigate=yes`
 
     window.open(wazeUrl, "_blank");  // Open in a new tab
