@@ -168,9 +168,9 @@ body {
     left: -10px;
     width: 30px;
     height: 30px;
-    background: radial-gradient(circle, #fff700, #ffd700, #ffa500);
+    background: radial-gradient(circle, #fff8dc, #ffe082, #ffcc80);
     border-radius: 50%;
-    opacity: 0.4;
+    opacity: 0.5;
     animation: fall 60s linear infinite;
     filter: blur(1px);
 }
@@ -178,12 +178,9 @@ body {
 @keyframes fall {
     0% {
         transform: translateX(0) rotate(0deg);
-        /* Initial state */
     }
-
     100% {
         transform: translateX(var(--translate-x)) translateY(var(--translate-y)) rotate(720deg);
-        /* Diagonal path with variable translation */
     }
 }
 
