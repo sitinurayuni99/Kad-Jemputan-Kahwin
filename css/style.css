@@ -12,8 +12,8 @@ body {
   background-image: url('../images/2.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+  background-attachment: scroll;
+  background-position: center center;
 }
 
 /*============================================================================================
@@ -26,10 +26,6 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-image: url('images/2.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     transition: opacity 0.5s ease;
 }
 
@@ -39,19 +35,13 @@ body {
 }
 
 /* Overlay that covers the entire viewport */
-.overlay {
+overlay {
     width: 420px;
-    /* Same width as the card-container */
     height: 100%;
-    /* Blur the background */
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    background-image: url('../images/2.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 /* Center the button within the overlay */
