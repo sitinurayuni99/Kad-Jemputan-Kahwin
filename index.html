@@ -320,19 +320,19 @@
     </div>
 
     <div id="rsvp-menu" class="toggle-menu">
-        <div class="rsvp">
-            <h1>Kehadiran</h1>
-            <div class="button">
-                <button type="button" id="btn-hadir">
-                    <i class='bx bx-check'></i>
-                    <span>Hadir</span>
-                </button>
-                <button type="button" id="btn-tidak-hadir">
-                    <i class='bx bx-x'></i>
-                    <span>Tidak Hadir</span>
-                </button>
-            </div>
-        </div>
+      <div class="rsvp">
+        <h1>Kehadiran</h1>
+        <form id="rsvp-form">
+          <input type="text" id="name" placeholder="Nama Anda" required />
+          <select id="status" required>
+            <option value="">Pilih Kehadiran</option>
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+          </select>
+          <button type="submit">Hantar</button>
+        </form>
+      </div>
+    </div>
     </div>
 
     <div id="contact-menu" class="toggle-menu">
