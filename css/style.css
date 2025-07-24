@@ -181,13 +181,13 @@ body {
 .petal {
     position: absolute;
     left: -10px;
-    /* Start just off the left edge of the card */
-    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(to right, #F8F4FF, #E5BDF6, #D8DEDE);
     border-radius: 50%;
-    /* Rounded shape */
-    opacity: 0.5;
-    animation: fall 60s linear;
-    /* Animation duration */
+    opacity: 0.4;
+    animation: fall 60s linear infinite;
+    filter: blur(1px);
 }
 
 @keyframes fall {
