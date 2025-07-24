@@ -661,27 +661,30 @@ section {
     justify-content: center;
     margin-top: 30px;
     z-index: 500;
+    background-color: #fff9db; /* Soft yellow */
+    border-radius: 12px;
+    padding: 20px;
 }
 
 .card section.info .ucapan .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     text-align: center;
-    width: 85%;
+    width: 100%;
 }
 
 .card section.info .ucapan .content p {
     font-size: 16px;
     font-family: 'Cormorant Garamond', serif;
     margin: 0;
+    color: black; /* Teks warna hitam */
     text-align: center;
+    line-height: 1.6;
 }
 
 .card section.info .ucapan img {
     width: 100%;
     height: auto;
+    border-radius: 12px;
 }
 
 
@@ -718,8 +721,9 @@ section {
     height: 450px;
     overflow-y: auto;
     padding: 0px 16px;
-    border-top: 1px solid wheat;
-    border-bottom: 1px solid wheat;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: #fff9db;
 }
 
 .card section.info .rsvp .container-message .content {
@@ -727,7 +731,7 @@ section {
     width: 100%;
     white-space: normal;
     text-overflow: ellipsis;
-    border-bottom: 1px solid #DDDDDD;
+    border-bottom: 1px solid #000000;
 }
 
 .card section.info .rsvp .container-message .content p {
@@ -735,29 +739,25 @@ section {
     font-family: 'Cormorant Garamond', serif;
     margin: 0;
     text-align: left;
+    color: black;
 }
 
 .card section.info .rsvp .container-message .content p.name {
-    color: darkcyan;
+    color: black;
     margin-top: 10px;
+    font-weight: 600;
 }
 
-.card section.info .rsvp .container-message .content p.name::before {
-    content: '--';
-    color: grey;
-    font-size: 0.9em;
-    margin-right: 8px;
-}
-
+.card section.info .rsvp .container-message .content p.name::before,
 .card section.info .rsvp .container-message .content p.name::after {
     content: '--';
-    color: grey;
-    font-size: 16px;
-    margin-left: 8px;
+    color: #333;
+    font-size: 0.9em;
+    margin: 0 8px;
 }
 
 .card section.info .rsvp .container-message .content p.message {
-    color: darkgrey;
+    color: black;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -772,20 +772,17 @@ section {
 }
 
 .card section.info .rsvp .container-message .content-empty p.empty-message {
-    color: darkgray;
+    color: #222;
     text-align: center;
 }
 
-
 .card section.info .rsvp .container-message::-webkit-scrollbar {
-    width: 2px;
-    background-color: #ADD8E6;
+    width: 4px;
+    background-color: #e0e0e0;
 }
 
 .card section.info .rsvp .container-message::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgb(114, 243, 243);
-    -webkit-box-shadow: inset 0 0 6px rgb(1, 66, 66);
-    background-color: navy;
+    background-color: #555;
     border-radius: 12px;
 }
 
@@ -806,29 +803,27 @@ section {
     padding: 16px 0px;
     width: 45%;
     border-radius: 10px;
-    border: 1px solid grey;
-    /* background: linear-gradient(90deg, #E5BDF6, #D8DEDE) !important; */
-    /* background: linear-gradient(to right, #24243e, #302b63, #0f0c29); */
-    background: #F8F4FF;
+    border: 1px solid black;
+    background: transparent;
     cursor: pointer;
     gap: 10px;
+    color: black;
 }
 
 .card section.info .rsvp .beri-ucapan-button button:hover {
-    /* background: linear-gradient(90deg, #E5BDF6, #D8DEDE) !important; */
-    /* background: linear-gradient(to right, #24243e, #302b63, #0f0c29); */
-    background: #F8F4FF;
-    opacity: 0.8;
+    background: #fef6cd;
+    opacity: 0.9;
 }
 
 .card section.info .rsvp .beri-ucapan-button button .bx {
     font-size: 16px;
-    color: darkcyan;
+    color: black;
 }
 
 .card section.info .rsvp .beri-ucapan-button button span {
     font-size: 14px;
     font-weight: 500;
+    color: black;
 }
 
 
@@ -871,7 +866,6 @@ section {
     font-size: 1.5rem;
     font-weight: 500;
 }
-
 
 
 
