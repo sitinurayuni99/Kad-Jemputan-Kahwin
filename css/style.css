@@ -231,32 +231,24 @@ section {
     position: relative;
 }
 
-/* Seksyen lain (plain background) */
-.card section:not(.intro) {
-    background-image: url('../images/plain.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-/* Kandungan dalam intro */
 .card section.intro .content {
-    width: 100%;
+    display: block;
+    padding: 200px 0px;
     text-align: center;
 }
 
 .card section.intro .content img {
     width: 50%;
-    height: auto;
+    height: 10%;
 }
 
 .card section.intro .content p {
-    margin-top: 12px;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
 .card section.intro .content p.title {
-    margin-top: 40px;
+    margin-top: 30px;
     margin-bottom: 30px;
     color: #111111;
     text-transform: uppercase;
@@ -267,8 +259,8 @@ section {
 }
 
 .card section.intro .content h2 {
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     font-family: "Allura", cursive;
     font-size: 48px;
     font-weight: 500;
@@ -280,32 +272,6 @@ section {
     font-family: "Roboto", sans-serif;
     letter-spacing: 1px;
     font-size: 16px;
-    margin-top: 10px;
-}
-
-/* Responsive view (skrin kecil) */
-@media screen and (max-width: 768px) {
-    .card section.intro {
-        padding: 60px 15px;
-    }
-
-    .card section.intro .content img {
-        width: 60%;
-    }
-
-    .card section.intro .content h2 {
-        font-size: 36px;
-        margin: 20px 0;
-    }
-
-    .card section.intro .content p.title {
-        font-size: 14px;
-        margin: 30px 0;
-    }
-
-    .card section.intro .content .date {
-        font-size: 14px;
-    }
 }
 
 
