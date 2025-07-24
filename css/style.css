@@ -615,17 +615,16 @@ section {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-..doa-box p.arabic {
+.doa-box p.arabic {
   font-family: 'Scheherazade', serif;
-  font-size: 22px; /* kecilkan sedikit */
+  font-size: 18px;
   color: #111;
-  line-height: 2;
-  margin: 10px 0;
+  line-height: 1.6;
   direction: rtl;
-  white-space: normal;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  text-align: right;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .doa-box p.latin {
