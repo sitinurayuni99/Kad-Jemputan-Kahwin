@@ -602,6 +602,43 @@ section {
 
 
 
+/*============================================================================================
+    # Doa
+============================================================================================*/
+.card section.doa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: transparent;
+}
+
+.card section.doa .doa-container {
+  background-color: rgba(255, 255, 255, 0.7); /* boleh ubah ke transparent kalau nak */
+  border: 1px solid #000;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card section.doa .doa-container .arabic {
+  font-family: 'Scheherazade', serif;
+  font-size: 24px;
+  color: #111;
+  line-height: 2;
+  margin-bottom: 12px;
+}
+
+.card section.doa .doa-container .translation {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: #444;
+  font-style: italic;
+}
+
+
 
 
 /*============================================================================================
