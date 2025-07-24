@@ -605,18 +605,19 @@ section {
 
 
 .doa-box {
-  background-color: rgba(255, 255, 255, 0.6); /* semi-transparent white */
-  padding: 20px 25px;
+  background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent */
+  padding: 25px 30px;
   margin: 30px auto;
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 12px;
   text-align: center;
   max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .doa-box p.arabic {
   font-family: 'Scheherazade', serif;
-  font-size: 24px;
+  font-size: 28px;
   color: #111;
   line-height: 2;
   margin: 10px 0;
@@ -625,10 +626,20 @@ section {
 
 .doa-box p.latin {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
+  font-size: 18px;
   color: #111;
-  line-height: 1.6;
-  margin: 15px 0 0 0;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .doa-box p.arabic {
+    font-size: 22px;
+  }
+
+  .doa-box p.latin {
+    font-size: 16px;
+  }
 }
 
 
