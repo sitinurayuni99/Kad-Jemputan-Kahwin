@@ -885,12 +885,13 @@ section {
     right: 0;
     max-width: 400px;
     margin: 0 auto;
-    background: #fff9db; /* soft yellow */
+    background: #fff9db; /* Soft yellow background */
     box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
     transition: bottom 0.4s;
     z-index: 1000;
     border-radius: 10px;
+    color: #111;
 }
 
 .toggle-menu.open {
@@ -916,91 +917,50 @@ section {
     align-items: center;
     justify-content: center;
     padding: 16px;
+    color: #111;
 }
 
 .toggle-menu .calendar p,
+.toggle-menu .calendar p span,
+.toggle-menu .calendar .button span,
 .toggle-menu .location p,
-.toggle-menu .music p {
-    font-size: 16px;
-    font-family: 'Cormorant Garamond', serif;
-    color: #111;
-}
-
-.toggle-menu .calendar p span {
-    color: #111;
-}
-
-.toggle-menu .calendar .button,
-.toggle-menu .location .button,
-.toggle-menu .rsvp .button,
-.toggle-menu .ucapan-tetamu .button {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    align-items: center;
+.toggle-menu .music p,
+.toggle-menu .rsvp .button span,
+.toggle-menu .contact .name span,
+.toggle-menu .ucapan-tetamu form label,
+.toggle-menu .success-message p {
+    color: #111 !important;
 }
 
 .toggle-menu .calendar .button button,
 .toggle-menu .location .button button,
 .toggle-menu .rsvp .button button,
 .toggle-menu .ucapan-tetamu .button button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 5px;
-    width: 250px;
-    height: 40px;
-    cursor: pointer;
-    background: #ffffff;
+    background: #fff;
     color: #111;
-    font-family: 'Cormorant Garamond', serif;
-    gap: 10px;
 }
 
 .toggle-menu .calendar .button button:hover,
 .toggle-menu .location .button button:hover,
 .toggle-menu .rsvp .button button:hover,
 .toggle-menu .ucapan-tetamu .button button:hover {
-    background: #ffffff;
+    background: #fff;
     opacity: 0.9;
 }
 
-.toggle-menu .calendar .button button .bx,
-.toggle-menu .location .button button .bx,
-.toggle-menu .rsvp .button button i,
-.toggle-menu .ucapan-tetamu .button button i {
-    font-size: 20px;
-    color: #111;
-}
-
-.toggle-menu .contact .content .person .first-section .name span {
-    color: #111;
-}
-
-.toggle-menu .contact .content .person .second-section .bx {
-    color: #111;
-}
-
-.toggle-menu .ucapan-tetamu form label {
-    color: #111;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: 'Cormorant Garamond', serif;
-    text-align: center;
-}
-
-.toggle-menu .success-message i {
-    font-size: 64px;
-    color: #28a745;
-}
-
-.toggle-menu .success-message p {
-    font-size: 16px;
-    font-weight: 300;
-    font-family: 'Cormorant Garamond', serif;
-    color: #111;
+/* Ikon khas kekal warna asal */
+.toggle-menu .calendar .button button .bxl-google,
+.toggle-menu .location .button button .bxl-google,
+.toggle-menu .location .button button .fa-waze {
+    background: linear-gradient(to bottom left, transparent 49%, #fbbc05 50%) 0 25%/48% 40%,
+        linear-gradient(to top left, transparent 49%, #fbbc05 50%) 0 75%/48% 40%,
+        linear-gradient(-40deg, transparent 53%, #ea4335 54%),
+        linear-gradient(45deg, transparent 46%, #4285f4 48%), #34a853;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
 }
 
 
