@@ -661,30 +661,34 @@ section {
     justify-content: center;
     margin-top: 30px;
     z-index: 500;
-    background-color: #fff9db; /* Soft yellow */
-    border-radius: 12px;
-    padding: 20px;
+    background-color: transparent; /* pastikan tiada background */
+}
+
+.card section.info .ucapan img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
 .card section.info .ucapan .content {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    width: 100%;
+    width: 85%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7); /* putih transparent */
+    border-radius: 10px;
+    color: black;
 }
 
 .card section.info .ucapan .content p {
     font-size: 16px;
     font-family: 'Cormorant Garamond', serif;
     margin: 0;
-    color: black; /* Teks warna hitam */
     text-align: center;
-    line-height: 1.6;
-}
-
-.card section.info .ucapan img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
+    color: black;
 }
 
 
