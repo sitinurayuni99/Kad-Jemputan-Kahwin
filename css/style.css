@@ -499,12 +499,12 @@ section {
 }
 
 .card section.info .countdown .hero .hero-body .counter .counter-boxes .count-box {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    background-color: transparent;
+    border: 1px solid #000;
     border-radius: 12px;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     display: flex;
     flex-direction: column;
     align-items: center;
