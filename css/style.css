@@ -172,7 +172,7 @@ body {
     border-radius: 50%;
     opacity: 0.4;
     animation: fall 60s linear infinite;
-    filter: blur(2px);
+    filter: blur(1px);
     mix-blend-mode: screen;
 }
 
@@ -521,12 +521,12 @@ section {
 }
 
 .card section.info .countdown .hero .hero-body .counter .counter-boxes .count-box {
-    background: rgba(255, 255, 255, 0.08); /* semi-transparent */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -534,7 +534,7 @@ section {
     width: 100px;
     height: 100px;
     margin-right: 6px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 @media screen and (max-width: 768px) {
