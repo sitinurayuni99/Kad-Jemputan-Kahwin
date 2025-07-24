@@ -885,7 +885,7 @@ section {
     right: 0;
     max-width: 400px;
     margin: 0 auto;
-    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    background: #fff9db; /* soft yellow */
     box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
     transition: bottom 0.4s;
