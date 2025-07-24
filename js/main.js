@@ -149,126 +149,135 @@ setInterval(createPetal, petalInterval); // Create petals every 100 milliseconds
 
 /** =====================================================
  *  Toggle Menu
-  ======================================================= */
-// ================================== Calendar ==================================
-// Get all buttons and their corresponding menus
+ ======================================================= */
+
+// Mapping butang ke ID menu masing-masing
 const toggleButtons = {
     'location-btn': 'location-menu',
     'music-btn': 'music-menu',
     'contact-btn': 'contact-menu',
-    // Add other button-to-menu mappings here
 };
 
-// Function to toggle a menu open/close
+// Fungsi buka/tutup menu
 function toggleMenu(menuId, event) {
-    event.stopPropagation(); // Prevent click from propagating
+    event.stopPropagation();
     const menu = document.getElementById(menuId);
 
     if (menu.classList.contains('open')) {
-        menu.classList.remove('open'); // Close the menu
+        menu.classList.remove('open');
     } else {
-        // Close all other menus first
         closeAllMenus();
-        menu.classList.add('open'); // Open the menu
+        menu.classList.add('open');
     }
 }
 
-// Function to close all menus
+// Tutup semua menu
 function closeAllMenus() {
     for (const menuId of Object.values(toggleButtons)) {
         const menu = document.getElementById(menuId);
         if (menu.classList.contains('open')) {
-            menu.classList.remove('open'); // Close the menu
+            menu.classList.remove('open');
         }
     }
+
+    // Tutup RSVP & ucapan juga
+    const rsvp = document.getElementById("rsvp-menu");
+    const ucapan = document.getElementById("ucapan-menu");
+    if (rsvp) rsvp.classList.remove("open");
+    if (ucapan) ucapan.classList.remove("open");
 }
 
-// Add click event listeners to all toggle buttons
+// Tambah event listener ke semua butang toggle
 for (const [buttonId, menuId] of Object.entries(toggleButtons)) {
     const button = document.getElementById(buttonId);
     button.addEventListener('click', (event) => toggleMenu(menuId, event));
 }
 
-// Add a global click handler to close all menus when clicking outside
+// Klik luar kawasan menu => tutup semua menu
 document.addEventListener('click', () => closeAllMenus());
 
-// Prevent clicks within menus from closing them
+// Jangan tutup kalau klik dalam menu
 for (const menuId of Object.values(toggleButtons)) {
     const menu = document.getElementById(menuId);
     menu.addEventListener('click', (event) => event.stopPropagation());
 }
 
-// Function to close a specific menu
+// Tutup menu tertentu
 function closeMenu(menuId) {
     const menu = document.getElementById(menuId);
     if (menu.classList.contains('open')) {
-        menu.classList.remove('open'); // Close the menu
+        menu.classList.remove('open');
     }
 }
 
-// Add event listener for the close button inside the ucapan menu
+// Butang tutup ucapan menu
 const closeButton = document.querySelector('#ucapan-menu .tutup');
 if (closeButton) {
     closeButton.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent this from propagating and triggering other closures
-        closeMenu('ucapan-menu'); // Close the specific menu
+        event.stopPropagation();
+        closeMenu('ucapan-menu');
     });
 }
 
-// Function to open RSVP
+/** =====================================================
+ *  Sahkan Kehadiran - Open RSVP Menu
+ ======================================================= */
 const kehadiranBtn = document.getElementById("kehadiran-btn");
+const rsvpMenu = document.getElementById("rsvp-menu");
 
-
-
-
+if (kehadiranBtn && rsvpMenu) {
+    kehadiranBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        closeAllMenus(); // Tutup semua dulu
+        rsvpMenu.classList.add("open");
+    });
+}
 
 /** =====================================================
- *  Handle Form
-  ======================================================= */
-// function submitUcapan() {
-//     document.getElementById("form-ucapan").submit();
-// }
+ *  Berikan Ucapan - Open Ucapan Menu
+ ======================================================= */
+const ucapanBtn = document.getElementById("ucapan-btn");
+const ucapanMenu = document.getElementById("ucapan-menu");
+
+if (ucapanBtn && ucapanMenu) {
+    ucapanBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        closeAllMenus();
+        ucapanMenu.classList.add("open");
+    });
+}
+
+/** =====================================================
+ *  Submit Ucapan Form
+ ======================================================= */
 document.getElementById("form-ucapan").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault();
 
     const form = document.getElementById("form-ucapan");
-    const formData = new FormData(form); // Collect the form data
-    const actionUrl = form.action; // Get the form's target URL
+    const formData = new FormData(form);
+    const actionUrl = form.action;
 
     fetch(actionUrl, {
-        method: "POST", // Use the POST method to submit data
-        body: formData, // Attach the FormData object
+        method: "POST",
+        body: formData,
     })
-    .then(response => {
-        if (response.ok) {
-            return response.text(); // Process the response as text
-        } else {
-            throw new Error("Form submission failed"); // Handle errors
-        }
-    })
+    .then(response => response.ok ? response.text() : Promise.reject("Form submission failed"))
     .then(result => {
-        // Display the success message in the success-menu
         const successMenu = document.getElementById("success-menu");
         successMenu.innerHTML = "<div class='success-message'><i class='bx bx-check'></i><p>Mesej anda berjaya dihantar!</p></div>";
-        successMenu.classList.add("open"); // Open the success menu
+        successMenu.classList.add("open");
 
-        // Close the ucapan menu after successful submission
         closeMenu('ucapan-menu');
-
-        // Optionally reset the form
         form.reset();
     })
     .catch(error => {
-        console.error("Error:", error); // Log any errors
+        console.error("Error:", error);
     });
 });
 
-
-
-
 /** =====================================================
  *  Handle Kehadiran Count
-  ======================================================= */
+ ======================================================= */
 function incrementCount(endpoint, successMessage, iconClass, closeMenuId) {
     fetch(endpoint, {
         method: 'POST',
@@ -277,26 +286,16 @@ function incrementCount(endpoint, successMessage, iconClass, closeMenuId) {
         },
         body: 'action=increment',
     })
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error("Request failed");
-        }
-    })
+    .then(response => response.ok ? response.json() : Promise.reject("Request failed"))
     .then(data => {
         if (data.attend) {
-            // Display the success message
             const successMenu = document.getElementById("success-menu");
             successMenu.innerHTML = `<div class='success-message'><i class='${iconClass}'></i><p>${successMessage}</p></div>`;
-            successMenu.classList.add("open"); // Open the success menu
+            successMenu.classList.add("open");
 
-            // Optionally close other menu
-            if (closeMenuId) {
-                closeMenu(closeMenuId); // Close the specified menu
-            }
+            if (closeMenuId) closeMenu(closeMenuId);
         } else {
-            console.error("Increment count error:", data.error);
+            console.error("Increment error:", data.error);
             alert("Terjadi kesilapan: " + data.error);
         }
     })
@@ -306,19 +305,23 @@ function incrementCount(endpoint, successMessage, iconClass, closeMenuId) {
     });
 }
 
-// Attach the click event to the "Hadir" and "Tidak Hadir" buttons
-document.getElementById("btn-hadir").onclick = function() {
-    incrementCount('count_hadir.php', "Kami menantikan kedatangan anda!", 'bx bxs-wink-smile', 'rsvp-menu'); // Success message and optionally close RSVP menu
+// Event untuk butang hadir dan tidak hadir
+document.getElementById("btn-hadir").onclick = function () {
+    incrementCount('count_hadir.php', "Kami menantikan kedatangan anda!", 'bx bxs-wink-smile', 'rsvp-menu');
 };
 
-document.getElementById("btn-tidak-hadir").onclick = function() {
-    incrementCount('count_tidak_hadir.php', "Maaf, mungkin lain kali.", 'bx bxs-sad', 'rsvp-menu'); // Success message and optionally close RSVP menu
+document.getElementById("btn-tidak-hadir").onclick = function () {
+    incrementCount('count_tidak_hadir.php', "Maaf, mungkin lain kali.", 'bx bxs-sad', 'rsvp-menu');
 };
-
-
-
-
 
 /** =====================================================
- *  Image Carousel
-  ======================================================= */
+ *  WhatsApp & Call Buttons (Contact)
+ ======================================================= */
+function openWhatsApp(phoneNumber) {
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    window.open(whatsappUrl, "_blank");
+}
+
+function makePhoneCall(phoneNumber) {
+    window.location.href = `tel:${phoneNumber}`;
+}
