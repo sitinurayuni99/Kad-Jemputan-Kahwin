@@ -885,13 +885,12 @@ section {
     right: 0;
     max-width: 400px;
     margin: 0 auto;
-    background: #fff9db;
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
     box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
     transition: bottom 0.4s;
     z-index: 1000;
     border-radius: 10px;
-    color: #111;
 }
 
 .toggle-menu.open {
@@ -902,7 +901,7 @@ section {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #111;
+    color: white;
     text-transform: uppercase;
 }
 
@@ -917,7 +916,6 @@ section {
     align-items: center;
     justify-content: center;
     padding: 16px;
-    color: #111;
 }
 
 .toggle-menu .calendar p {
@@ -948,11 +946,11 @@ section {
     width: 250px;
     height: 40px;
     cursor: pointer;
-    background: #fff9db;
+    background: #F8F4FF;
 }
 
 .toggle-menu .calendar .button button:hover {
-    background: #fff9db;
+    background: #F8F4FF;
     opacity: 0.9;
 }
 
@@ -1003,11 +1001,11 @@ section {
     width: 180px;
     height: 35px;
     cursor: pointer;
-    background: #fff9db;
+    background: #F8F4FF;
 }
 
 .toggle-menu .location .button button:hover {
-    background: #fff9db;
+    background: #F8F4FF;
     opacity: 0.9;
 }
 
@@ -1052,11 +1050,11 @@ section {
     border-radius: 5px;
     gap: 5px;
     cursor: pointer;
-    background: #fff9db;
+    background: #F8F4FF;
 }
 
 .toggle-menu .rsvp .button button:hover {
-    background: #fff9db;
+    background: #F8F4FF;
     opacity: 0.9;
 }
 
@@ -1119,7 +1117,7 @@ section {
 .toggle-menu .contact .content .person .first-section .name span {
     font-size: 16px;
     font-family: 'Cormorant Garamond', serif;
-    color: #fff9db;
+    color: #F8F4FF;
     font-weight: 700;
 }
 
@@ -1136,7 +1134,7 @@ section {
 }
 
 .toggle-menu .contact .content .person .second-section .bx {
-    color: #fff9db;
+    color: #F8F4FF;
     font-size: 30px;
 }
 
@@ -1189,12 +1187,12 @@ section {
     border-radius: 5px;
     padding: 8px 6px;
     cursor: pointer;
-    background: #fff9db;
+    background: #F8F4FF;
     gap: 5px;
 }
 
 .toggle-menu .ucapan-tetamu .button button:hover {
-    background: #fff9db;
+    background: #F8F4FF;
     opacity: 0.9;
 }
 
@@ -1234,6 +1232,7 @@ section {
     font-family: 'Cormorant Garamond', serif;
     color: white;
 }
+
 
 
 /*============================================================================================
