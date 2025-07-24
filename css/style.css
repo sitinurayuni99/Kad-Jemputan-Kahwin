@@ -661,13 +661,15 @@ section {
     justify-content: center;
     margin-top: 30px;
     z-index: 500;
-    background-color: transparent; /* pastikan tiada background */
+    background-image: url('plain.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
 }
 
 .card section.info .ucapan img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+    display: none;
 }
 
 .card section.info .ucapan .content {
@@ -678,9 +680,10 @@ section {
     text-align: center;
     width: 85%;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.7); /* putih transparent */
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
     color: black;
+    border: 1px solid black;
 }
 
 .card section.info .ucapan .content p {
@@ -690,6 +693,7 @@ section {
     text-align: center;
     color: black;
 }
+
 
 
 
