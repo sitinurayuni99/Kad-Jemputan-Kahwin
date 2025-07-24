@@ -168,12 +168,14 @@ body {
     left: -10px;
     width: 30px;
     height: 30px;
-    background: radial-gradient(circle, #fff8dc, #ffe082, #ffcc80);
+    background: radial-gradient(circle at center, rgba(255, 248, 220, 0.5), rgba(255, 224, 130, 0.4), rgba(255, 204, 128, 0.3));
     border-radius: 50%;
-    opacity: 0.5;
+    opacity: 0.3;
     animation: fall 60s linear infinite;
-    filter: blur(1px);
+    filter: blur(2px);
+    mix-blend-mode: screen;
 }
+
 
 @keyframes fall {
     0% {
