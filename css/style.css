@@ -294,7 +294,10 @@ section {
     justify-content: center;
     gap: 10px;
     padding: 50px 0px;
-    background: linear-gradient(to right, #F8F4FF, #f9fcff, #F8F4FF);
+    background-image: url('images/2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     min-height: 100vh;
 }
 
