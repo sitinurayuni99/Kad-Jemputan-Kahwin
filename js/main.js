@@ -32,85 +32,6 @@ document.getElementById("toggle-content").addEventListener("click", function () 
 
 
 
-
-
-
-
-
-
-
-
-/** =====================================================
- *  Add to Calendar
-  ======================================================= */
-const event = {
-    title: "Jemputan Kenduri Kahwin Ayuni & Azim",
-    startDate: "20250907T020000Z", // YYYYMMDDTHHmmssZ (UTC)
-    endDate: "20250907T070000Z",
-    location: "Lot 3238, Jalan Khalifah Zakaria, Kg Paya Jaras Dalam, 47000 Sg Buloh, Selangor, Malaysia",
-    description: "Kami menjemput tuan/puan hadir ke majlis perkahwinan anakanda kami.",
-};
-
-// Function to generate Google Calendar URL
-function generateGoogleCalendarLink(event) {
-    const { title, startDate, endDate, location, description } = event;
-
-    const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
-    const params = new URLSearchParams({
-        text: title,
-        dates: `${startDate}/${endDate}`,
-        details: description,
-        location: location,
-    });
-
-    return `${baseUrl}&${params.toString()}`;
-}
-
-// Function to generate ICS file content
-function generateICS(event) {
-    const { title, startDate, endDate, location, description } = event;
-
-    return `
-        BEGIN:VCALENDAR
-        VERSION:2.0
-        BEGIN:VEVENT
-        SUMMARY:${title}
-        DTSTART:${startDate}
-        DTEND:${endDate}
-        LOCATION:${location}
-        DESCRIPTION:${description}
-        END:VEVENT
-        END:VCALENDAR
-    `.trim();
-}
-
-// Function to download an ICS file
-function downloadICS(filename, content) {
-    const blob = new Blob([content], { type: "text/calendar" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-
-// Handler for Google Calendar button
-function addGoogleCalendar() {
-    const googleLink = generateGoogleCalendarLink(event);
-    window.open(googleLink, "_blank");
-}
-
-// Handler for Apple Calendar button
-function addAppleCalendar() {
-    const icsContent = generateICS(event);
-    downloadICS("event.ics", icsContent);
-}
-
-
-
-
-
 /** =====================================================
  *  Location for Google and Waze
   ======================================================= */
@@ -133,13 +54,10 @@ function openWaze() {
 
 
 
-
-
 /** =====================================================
     Contact
   ======================================================= */
 function openWhatsApp(phoneNumber) {
-    const message = "https://kad-jemputan-kahwin.vercel.app/\n\nHi, maaf menggangu. Saya ingin bertanyakan sesuatu berkenaan majlis perkahwinan ini.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");  // Opens WhatsApp in a new tab
 }
@@ -235,14 +153,9 @@ setInterval(createPetal, petalInterval); // Create petals every 100 milliseconds
 // ================================== Calendar ==================================
 // Get all buttons and their corresponding menus
 const toggleButtons = {
-    'calendar-btn': 'calendar-menu',
     'location-btn': 'location-menu',
     'music-btn': 'music-menu',
-    'rsvp-btn': 'rsvp-menu',
-    'ucapan-btn': 'ucapan-menu',
     'contact-btn': 'contact-menu',
-    'kehadiran-btn': 'rsvp-menu',
-    'btn-hadir': 'success-menu'
     // Add other button-to-menu mappings here
 };
 
