@@ -668,22 +668,20 @@ section {
     border-radius: 10px;
 }
 
+/* Gambar latar tidak diperlukan lagi */
 .card section.info .ucapan img {
     display: none;
 }
 
 .card section.info .ucapan .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative; /* Gunakan relative bukan absolute supaya ikut aliran biasa */
     text-align: center;
     width: 85%;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
     color: black;
-    border: 1px solid black;
+    border: 1px solid black; /* ✅ Border hitam */
+    background-color: transparent; /* ❌ Tiada overlay putih */
 }
 
 .card section.info .ucapan .content p {
