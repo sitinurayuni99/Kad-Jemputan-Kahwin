@@ -1,5 +1,7 @@
 /* Import */
 @import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 
 /* General Global Setting */
 * {
@@ -602,41 +604,33 @@ section {
 
 
 
-/*============================================================================================
-    # Doa
-============================================================================================*/
-.card section.doa {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-  background-color: transparent;
-}
-
-.card section.doa .doa-container {
-  background-color: rgba(255, 255, 255, 0.7); /* boleh ubah ke transparent kalau nak */
+.doa-box {
+  background-color: rgba(255, 255, 255, 0.6); /* semi-transparent white */
+  padding: 20px 25px;
+  margin: 30px auto;
   border: 1px solid #000;
   border-radius: 12px;
-  padding: 20px;
-  max-width: 90%;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-width: 90%;
 }
 
-.card section.doa .doa-container .arabic {
+.doa-box p.arabic {
   font-family: 'Scheherazade', serif;
   font-size: 24px;
   color: #111;
   line-height: 2;
-  margin-bottom: 12px;
+  margin: 10px 0;
+  direction: rtl;
 }
 
-.card section.doa .doa-container .translation {
+.doa-box p.latin {
   font-family: 'Cormorant Garamond', serif;
   font-size: 16px;
-  color: #444;
-  font-style: italic;
+  color: #111;
+  line-height: 1.6;
+  margin: 15px 0 0 0;
 }
+
 
 
 
