@@ -58,8 +58,8 @@ function openWaze() {
     Contact
   ======================================================= */
 function openWhatsApp(phoneNumber) {
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, "_blank");  // Opens WhatsApp in a new tab
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    window.open(whatsappUrl, "_blank"); // Buka dalam tab baru
 }
 
 function makePhoneCall(phoneNumber) {
