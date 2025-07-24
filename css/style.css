@@ -9,11 +9,7 @@
 }
 
 body {
-  background-image: url('../images/2.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
+  background: none;
 }
 
 /*============================================================================================
@@ -34,8 +30,8 @@ body {
     /* Fade out effect when 'hidden' class is added */
 }
 
-/* Overlay that covers the entire viewport */
-overlay {
+/* Betulkan selector: guna class .overlay */
+.overlay {
     width: 420px;
     height: 100%;
     display: flex;
@@ -82,7 +78,6 @@ overlay {
 
 .overlay .overlay-content .toggle-button .buka {
     font-size: 16px;
-    font-family: 300;
     font-family: "Bebas Neue", Arial, sans-serif;
     margin-top: 10px;
 }
@@ -226,6 +221,14 @@ section {
     min-height: 100vh;
     z-index: 500;
     border-bottom: 1px solid rgb(195, 195, 195);
+}
+
+/* Tambah bawah ni 👇 */
+.card section:not(.intro) {
+  background-image: url('../images/plain.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .card section.intro .content {
