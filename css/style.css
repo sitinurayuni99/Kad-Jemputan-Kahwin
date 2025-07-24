@@ -885,7 +885,7 @@ section {
     right: 0;
     max-width: 400px;
     margin: 0 auto;
-    background: #fff9db; /* Soft yellow background */
+    background: #fff9db;
     box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
     transition: bottom 0.4s;
@@ -920,38 +920,49 @@ section {
     color: #111;
 }
 
-.toggle-menu .calendar p,
-.toggle-menu .calendar p span,
-.toggle-menu .calendar .button span,
-.toggle-menu .location p,
-.toggle-menu .music p,
-.toggle-menu .rsvp .button span,
-.toggle-menu .contact .name span,
-.toggle-menu .ucapan-tetamu form label,
-.toggle-menu .success-message p {
-    color: #111 !important;
+.toggle-menu .calendar p {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
-.toggle-menu .calendar .button button,
-.toggle-menu .location .button button,
-.toggle-menu .rsvp .button button,
-.toggle-menu .ucapan-tetamu .button button {
-    background: #fff;
-    color: #111;
+.toggle-menu .calendar p span {
+    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    color: white;
 }
 
-.toggle-menu .calendar .button button:hover,
-.toggle-menu .location .button button:hover,
-.toggle-menu .rsvp .button button:hover,
-.toggle-menu .ucapan-tetamu .button button:hover {
-    background: #fff;
+.toggle-menu .calendar .button {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.toggle-menu .calendar .button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+    height: 40px;
+    cursor: pointer;
+    background: #fff9db;
+}
+
+.toggle-menu .calendar .button button:hover {
+    background: #fff9db;
     opacity: 0.9;
 }
 
-/* Ikon khas kekal warna asal */
+.toggle-menu .calendar .button button .bx {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
 .toggle-menu .calendar .button button .bxl-google,
-.toggle-menu .location .button button .bxl-google,
-.toggle-menu .location .button button .fa-waze {
+.toggle-menu .location .button button .bxl-google {
     background: linear-gradient(to bottom left, transparent 49%, #fbbc05 50%) 0 25%/48% 40%,
         linear-gradient(to top left, transparent 49%, #fbbc05 50%) 0 75%/48% 40%,
         linear-gradient(-40deg, transparent 53%, #ea4335 54%),
@@ -961,6 +972,267 @@ section {
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+}
+
+.toggle-menu .calendar .button button span {
+    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.toggle-menu .location p {
+    font-size: 16px;
+    font-weight: 300;
+    font-family: 'Cormorant Garamond', serif;
+    color: white;
+}
+
+.toggle-menu .location .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.toggle-menu .location .button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    width: 180px;
+    height: 35px;
+    cursor: pointer;
+    background: #fff9db;
+}
+
+.toggle-menu .location .button button:hover {
+    background: #fff9db;
+    opacity: 0.9;
+}
+
+.toggle-menu .location .button button .bx,
+.toggle-menu .location .button button .fa-waze {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+#music-menu {
+    padding: 20px 6px;
+}
+
+.toggle-menu .music p {
+    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    color: wheat;
+    text-align: center;
+}
+
+#audio-player {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.toggle-menu .rsvp .button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.toggle-menu .rsvp .button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    padding: 8px 6px;
+    border: none;
+    border-radius: 5px;
+    gap: 5px;
+    cursor: pointer;
+    background: #fff9db;
+}
+
+.toggle-menu .rsvp .button button:hover {
+    background: #fff9db;
+    opacity: 0.9;
+}
+
+.toggle-menu .rsvp .button button i {
+    font-size: 24px;
+}
+
+.toggle-menu .rsvp .button #btn-hadir i {
+    color: green;
+}
+
+.toggle-menu .rsvp .button #btn-tidak-hadir i {
+    color: red;
+}
+
+.toggle-menu .contact .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.toggle-menu .contact .content .person {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toggle-menu .contact .content .person button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-menu .contact .content .person .first-section {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-menu .contact .content .person .first-section .bx {
+    font-size: 30px;
+    color: darkcyan;
+}
+
+.toggle-menu .contact .content .person .first-section .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.toggle-menu .contact .content .person .first-section .name span {
+    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #fff9db;
+    font-weight: 700;
+}
+
+.toggle-menu .contact .content .person .first-section .name span:nth-child(2) {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 12;
+    color: lightgray;
+}
+
+.toggle-menu .contact .content .person .second-section {
+    display: flex;
+    gap: 10px;
+}
+
+.toggle-menu .contact .content .person .second-section .bx {
+    color: #fff9db;
+    font-size: 30px;
+}
+
+.toggle-menu .ucapan-tetamu form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.toggle-menu .ucapan-tetamu form label {
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.toggle-menu .ucapan-tetamu form input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    outline: none;
+}
+
+.toggle-menu .ucapan-tetamu form textarea {
+    width: 100%;
+    resize: none;
+    padding: 12px 16px;
+    outline: none;
+    border-radius: 12px;
+}
+
+.toggle-menu .ucapan-tetamu .button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.toggle-menu .ucapan-tetamu .button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 6px;
+    cursor: pointer;
+    background: #fff9db;
+    gap: 5px;
+}
+
+.toggle-menu .ucapan-tetamu .button button:hover {
+    background: #fff9db;
+    opacity: 0.9;
+}
+
+.toggle-menu .ucapan-tetamu .button button i {
+    font-size: 24px;
+}
+
+.toggle-menu .ucapan-tetamu .button button i.bxs-paper-plane {
+    color: darkcyan;
+}
+
+.toggle-menu .ucapan-tetamu .button button i.bx-x {
+    color: red;
+}
+
+.toggle-menu .success-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 16px 20px 16px;
+    gap: 10px;
+}
+
+.toggle-menu .success-message i {
+    font-size: 64px;
+    color: greenyellow;
+}
+
+.toggle-menu .success-message .bx.bxs-sad {
+    color: grey;
+}
+
+.toggle-menu .success-message p {
+    font-size: 16px;
+    font-weight: 300;
+    font-family: 'Cormorant Garamond', serif;
+    color: white;
 }
 
 
