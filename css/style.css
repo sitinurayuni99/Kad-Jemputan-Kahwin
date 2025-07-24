@@ -871,7 +871,6 @@ section {
 }
 
 
-
 /*============================================================================================
     # Bottom Toggle
 ============================================================================================*/
@@ -902,12 +901,10 @@ section {
     text-transform: uppercase;
 }
 
-.toggle-menu .calendar,
+/* Keep only relevant sections */
 .toggle-menu .location,
 .toggle-menu .music,
-.toggle-menu .rsvp,
-.toggle-menu .contact,
-.toggle-menu .ucapan-tetamu {
+.toggle-menu .contact {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -915,65 +912,9 @@ section {
     padding: 16px;
 }
 
-.toggle-menu .calendar p {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.toggle-menu .calendar p span {
-    font-size: 16px;
-    font-family: 'Cormorant Garamond', serif;
-    color: white;
-}
-
-.toggle-menu .calendar .button {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.toggle-menu .calendar .button button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 5px;
-    width: 250px;
-    height: 40px;
-    cursor: pointer;
-    background: #F8F4FF;
-}
-
-.toggle-menu .calendar .button button:hover {
-    background: #F8F4FF;
-    opacity: 0.9;
-}
-
-.toggle-menu .calendar .button button .bx {
-    font-size: 20px;
-    margin-right: 5px;
-}
-
-.toggle-menu .calendar .button button .bxl-google,
-.toggle-menu .location .button button .bxl-google {
-    background: linear-gradient(to bottom left, transparent 49%, #fbbc05 50%) 0 25%/48% 40%,
-        linear-gradient(to top left, transparent 49%, #fbbc05 50%) 0 75%/48% 40%,
-        linear-gradient(-40deg, transparent 53%, #ea4335 54%),
-        linear-gradient(45deg, transparent 46%, #4285f4 48%), #34a853;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-}
-
-.toggle-menu .calendar .button button span {
-    font-size: 16px;
-    font-family: 'Cormorant Garamond', serif;
-}
-
+/*===========================
+    # Location
+===========================*/
 .toggle-menu .location p {
     font-size: 16px;
     font-weight: 300;
@@ -1012,6 +953,9 @@ section {
     margin-right: 5px;
 }
 
+/*===========================
+    # Music
+===========================*/
 #music-menu {
     padding: 20px 6px;
 }
@@ -1028,45 +972,9 @@ section {
     width: 100%;
 }
 
-.toggle-menu .rsvp .button {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.toggle-menu .rsvp .button button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60%;
-    padding: 8px 6px;
-    border: none;
-    border-radius: 5px;
-    gap: 5px;
-    cursor: pointer;
-    background: #F8F4FF;
-}
-
-.toggle-menu .rsvp .button button:hover {
-    background: #F8F4FF;
-    opacity: 0.9;
-}
-
-.toggle-menu .rsvp .button button i {
-    font-size: 24px;
-}
-
-.toggle-menu .rsvp .button #btn-hadir i {
-    color: green;
-}
-
-.toggle-menu .rsvp .button #btn-tidak-hadir i {
-    color: red;
-}
-
+/*===========================
+    # Contact
+===========================*/
 .toggle-menu .contact .content {
     width: 100%;
     display: flex;
@@ -1134,102 +1042,6 @@ section {
     color: #F8F4FF;
     font-size: 30px;
 }
-
-.toggle-menu .ucapan-tetamu form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-    width: 100%;
-}
-
-.toggle-menu .ucapan-tetamu form label {
-    text-align: center;
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.toggle-menu .ucapan-tetamu form input {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 12px;
-    outline: none;
-}
-
-.toggle-menu .ucapan-tetamu form textarea {
-    width: 100%;
-    resize: none;
-    padding: 12px 16px;
-    outline: none;
-    border-radius: 12px;
-}
-
-.toggle-menu .ucapan-tetamu .button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.toggle-menu .ucapan-tetamu .button button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 6px;
-    cursor: pointer;
-    background: #F8F4FF;
-    gap: 5px;
-}
-
-.toggle-menu .ucapan-tetamu .button button:hover {
-    background: #F8F4FF;
-    opacity: 0.9;
-}
-
-.toggle-menu .ucapan-tetamu .button button i {
-    font-size: 24px;
-}
-
-.toggle-menu .ucapan-tetamu .button button i.bxs-paper-plane {
-    color: darkcyan;
-}
-
-.toggle-menu .ucapan-tetamu .button button i.bx-x {
-    color: red;
-}
-
-.toggle-menu .success-message {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 16px 16px 20px 16px;
-    gap: 10px;
-}
-
-.toggle-menu .success-message i {
-    font-size: 64px;
-    color: greenyellow;
-}
-
-.toggle-menu .success-message .bx.bxs-sad {
-    color: grey;
-}
-
-.toggle-menu .success-message p {
-    font-size: 16px;
-    font-weight: 300;
-    font-family: 'Cormorant Garamond', serif;
-    color: white;
-}
-
 
 /*============================================================================================
     # Image Carousel
