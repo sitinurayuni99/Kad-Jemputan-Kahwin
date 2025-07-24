@@ -275,17 +275,12 @@
     <div id="rsvp-menu" class="toggle-menu">
       <div class="rsvp">
         <h1>Kehadiran</h1>
-        <form id="rsvp-form">
-          <input type="text" id="name" placeholder="Nama Anda" required />
-          <select id="status" required>
-            <option value="">Pilih Kehadiran</option>
-            <option value="Hadir">Hadir</option>
-            <option value="Tidak Hadir">Tidak Hadir</option>
-          </select>
-          <button type="submit">Hantar</button>
-        </form>
+        <div class="kehadiran-buttons">
+          <p>Sila sahkan kehadiran anda:</p>
+          <button onclick="submitKehadiran('Hadir')">✅ Hadir</button>
+          <button onclick="submitKehadiran('Tidak Hadir')">❌ Tidak Hadir</button>
+        </div>
       </div>
-    </div>
     </div>
 
     <div id="contact-menu" class="toggle-menu">
