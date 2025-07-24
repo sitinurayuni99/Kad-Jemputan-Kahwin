@@ -721,9 +721,8 @@ section {
     height: 450px;
     overflow-y: auto;
     padding: 0px 16px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    background-color: #fff9db;
+    border-top: 1px solid wheat;
+    border-bottom: 1px solid wheat;
 }
 
 .card section.info .rsvp .container-message .content {
@@ -731,7 +730,7 @@ section {
     width: 100%;
     white-space: normal;
     text-overflow: ellipsis;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #DDDDDD;
 }
 
 .card section.info .rsvp .container-message .content p {
@@ -739,27 +738,24 @@ section {
     font-family: 'Cormorant Garamond', serif;
     margin: 0;
     text-align: left;
-    color: black;
+    color: black; /* teks hitam */
 }
 
 .card section.info .rsvp .container-message .content p.name {
     color: black;
     margin-top: 10px;
-    font-weight: 600;
 }
 
 .card section.info .rsvp .container-message .content p.name::before,
 .card section.info .rsvp .container-message .content p.name::after {
-    content: '--';
-    color: #333;
+    color: grey;
     font-size: 0.9em;
-    margin: 0 8px;
 }
 
 .card section.info .rsvp .container-message .content p.message {
-    color: black;
     margin-top: 10px;
     margin-bottom: 10px;
+    color: black;
 }
 
 .card section.info .rsvp .container-message .content-empty {
@@ -772,20 +768,22 @@ section {
 }
 
 .card section.info .rsvp .container-message .content-empty p.empty-message {
-    color: #222;
+    color: darkgray;
     text-align: center;
 }
 
 .card section.info .rsvp .container-message::-webkit-scrollbar {
-    width: 4px;
-    background-color: #e0e0e0;
+    width: 2px;
+    background-color: #ADD8E6;
 }
 
 .card section.info .rsvp .container-message::-webkit-scrollbar-thumb {
-    background-color: #555;
+    box-shadow: inset 0 0 6px rgb(114, 243, 243);
+    background-color: navy;
     border-radius: 12px;
 }
 
+/* Butang di bawah ucapan */
 .card section.info .rsvp .beri-ucapan-button {
     width: 100%;
     display: flex;
@@ -811,8 +809,7 @@ section {
 }
 
 .card section.info .rsvp .beri-ucapan-button button:hover {
-    background: #fef6cd;
-    opacity: 0.9;
+    background: rgba(0, 0, 0, 0.05);
 }
 
 .card section.info .rsvp .beri-ucapan-button button .bx {
