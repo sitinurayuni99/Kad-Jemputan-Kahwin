@@ -168,7 +168,7 @@ body {
     left: -10px;
     width: 30px;
     height: 30px;
-    background: linear-gradient(to right, #F8F4FF, #E5BDF6, #D8DEDE);
+    background: radial-gradient(circle, #fff700, #ffd700, #ffa500);
     border-radius: 50%;
     opacity: 0.4;
     animation: fall 60s linear infinite;
