@@ -210,37 +210,14 @@
         </section>
         <section class="footer">
             <ul class="menu">
-                <li id="calendar-btn"><i class='bx bx-calendar'></i></li>
                 <li id="location-btn"><i class='bx bx-map'></i></li>
                 <li id="music-btn"><i class='bx bx-music'></i></li>
-                <li id="rsvp-btn"><i class='bx bx-envelope'></i></li>
                 <li id="contact-btn"><i class='bx bx-phone'></i></li>
             </ul>
         </section>
     </div>
 
     <!-- Bottom Modal -->
-    <div id="calendar-menu" class="toggle-menu">
-        <div class="calendar">
-            <h1>Calendar</h1>
-            <p>
-                <span>07 September 2025</span>
-                <span>|</span>
-                <span>14 Rabi’ulawal 1447H</span>
-            </p>
-            <div class="button">
-                <button class="google" onclick="addGoogleCalendar()">
-                    <i class='bx bxl-google'></i>
-                    <span>Add to Calendar</span>
-                </button>
-                <button class="apple" onclick="addAppleCalendar()">
-                    <i class='bx bxl-apple'></i>
-                    <span>Add to Calendar</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
     <div id="location-menu" class="toggle-menu">
         <div class="location">
             <h1>Lokasi</h1>
@@ -271,23 +248,6 @@
             </audio>
         </div>
     </div>
-
-    <div id="rsvp-menu" class="toggle-menu">
-      <div class="rsvp">
-        <h1>Kehadiran</h1>
-        <form id="rsvp-form">
-          <input type="text" id="name" placeholder="Nama Anda" required />
-          <select id="status" required>
-            <option value="">Pilih Kehadiran</option>
-            <option value="Hadir">Hadir</option>
-            <option value="Tidak Hadir">Tidak Hadir</option>
-          </select>
-          <button type="submit">Hantar</button>
-        </form>
-      </div>
-    </div>
-    </div>
-
     <div id="contact-menu" class="toggle-menu">
         <div class="contact">
             <h1>Hubungi</h1>
@@ -345,31 +305,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div id="ucapan-menu" class="toggle-menu">
-        <div class="ucapan-tetamu">
-            <h1>Sampaikan Ucapan</h1>
-            <form id="form-ucapan" class="form-ucapan" action="insert_message.php" method="POST">
-                <label for="name">Nama Anda</label>
-                <input type="text" name="name" placeholder="Uzumaki Naruto" required>
-
-                <label for="ucapan">Ucapan</label>
-                <textarea name="message" id="ucapan" cols="30" rows="10" placeholder="Selemat pengantin baru..."
-                    required></textarea>
-
-                <div class="button">
-                    <button type="submit" class="hantar" id="hantar">
-                        <i class='bx bxs-paper-plane'></i>
-                        <span>Hantar</span>
-                    </button>
-                    <button class="tutup">
-                        <i class='bx bx-x'></i>
-                        <span>Tutup</span>
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
     <!-- This container will hold the success message and will be dynamically populated -->
