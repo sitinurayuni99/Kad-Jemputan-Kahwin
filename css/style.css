@@ -673,6 +673,11 @@ section {
     margin-top: 30px;
     margin-bottom: 50px;
     z-index: 500;
+
+    background-image: url('../images/2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .card section.info .rsvp h2 {
