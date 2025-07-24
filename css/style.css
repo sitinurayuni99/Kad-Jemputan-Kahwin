@@ -815,12 +815,17 @@ section {
     bottom: 0;
     left: 0;
     z-index: 1000;
+
+    background-image: url('../images/2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .footer ul.menu {
     max-width: 420px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    background: linear-gradient(to right, rgba(36,36,62,0.8), rgba(48,43,99,0.8), rgba(15,12,41,0.8));
     border-radius: 20px 20px 0 0;
     height: 4rem;
     padding: 0 16px;
