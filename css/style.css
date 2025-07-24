@@ -26,7 +26,10 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: #F8F4FF;
+    background-image: url('images/2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     transition: opacity 0.5s ease;
 }
 
