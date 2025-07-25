@@ -2,8 +2,8 @@
  * Buka overlay dan main muzik
  * ========================================================== */
 document.getElementById("toggle-content").addEventListener("click", function () {
-    var wrapper = document.querySelector(".wrapper");
-    var card = document.querySelector(".card");
+    const wrapper = document.querySelector(".wrapper");
+    const card = document.querySelector(".card");
 
     wrapper.classList.add("hidden");
 
@@ -13,11 +13,12 @@ document.getElementById("toggle-content").addEventListener("click", function () 
     }, { once: true });
 
     const audioPlayer = document.getElementById("audio-player");
-    audioPlayer.play().catch(e => {
-        console.log("Audio autoplay disekat: ", e);
-    });
+    if (audioPlayer) {
+        audioPlayer.play().catch(e => {
+            console.log("Audio autoplay disekat: ", e);
+        });
+    }
 });
-
 
 /* ============================================================
  * Lokasi: Google Maps & Waze
@@ -31,9 +32,8 @@ function openGoogleMaps() {
 function openWaze() {
     const latitude = 3.1927426;
     const longitude = 101.5504211;
-    window.open(`waze://?ll=${latitude},${longitude}&navigate=yes`, "_blank");
+    window.open(`https://waze.com/ul?ll=${latitude},${longitude}&navigate=yes`, "_blank");
 }
-
 
 /* ============================================================
  * Hubungi: WhatsApp & Panggilan
@@ -46,13 +46,11 @@ function makePhoneCall(phoneNumber) {
     window.location.href = `tel:${phoneNumber}`;
 }
 
-
 /* ============================================================
  * Scroll Reveal
  * ========================================================== */
 function reveal() {
     const reveals = document.querySelectorAll(".reveal");
-
     for (let i = 0; i < reveals.length; i++) {
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
@@ -66,7 +64,6 @@ function reveal() {
     }
 }
 window.addEventListener("scroll", reveal);
-
 
 /* ============================================================
  * Background Bunga (Petal)
@@ -106,18 +103,16 @@ function createPetal() {
 }
 setInterval(createPetal, petalInterval);
 
-
 /* ============================================================
- * Toggle Menu Function
+ * Fungsi Buka/Tutup Toggle Menu
  * ========================================================== */
 function toggleMenu(menuId) {
     const menu = document.getElementById(menuId);
-
     if (menu) {
         const isOpen = menu.classList.contains('open');
 
         // Tutup semua dahulu
-        document.querySelectorAll('.menu.open, .toggle-menu.open').forEach(el => {
+        document.querySelectorAll('.toggle-menu.open').forEach(el => {
             el.classList.remove('open');
         });
 
@@ -127,7 +122,6 @@ function toggleMenu(menuId) {
         }
     }
 }
-
 
 /* ============================================================
  * Butang toggle: RSVP & Ucapan
@@ -141,7 +135,6 @@ document.getElementById('ucapan-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
     toggleMenu('ucapan-menu');
 });
-
 
 /* ============================================================
  * Butang toggle: Location, Music, Contact
@@ -161,27 +154,19 @@ document.getElementById('contact-btn')?.addEventListener('click', (e) => {
     toggleMenu('contact-menu');
 });
 
-
 /* ============================================================
- * Tutup menu bila klik ✕
- * ========================================================== */
-document.querySelectorAll('.menu .tutup').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        btn.closest('.menu').classList.remove('open');
-    });
-});
-
-
-/* ============================================================
- * Klik luar akan tutup semua menu
+ * Tutup semua menu bila klik luar
  * ========================================================== */
 document.addEventListener('click', () => {
-    document.querySelectorAll('.menu.open, .toggle-menu.open').forEach(el => {
+    document.querySelectorAll('.toggle-menu.open').forEach(el => {
         el.classList.remove('open');
     });
 });
 
+/* Elakkan menu tertutup bila klik dalam kandungan */
+document.querySelectorAll('.toggle-menu').forEach(menu => {
+    menu.addEventListener('click', e => e.stopPropagation());
+});
 
 /* ============================================================
  * Optional: Alert Sahkan Kehadiran
