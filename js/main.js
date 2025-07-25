@@ -108,7 +108,7 @@ setInterval(createPetal, petalInterval);
 
 
 /* ============================================================
- * Toggle Menu (RSVP & Ucapan Google Form)
+ * Toggle Menu Function
  * ========================================================== */
 function toggleMenu(menuId) {
     const menu = document.getElementById(menuId);
@@ -117,7 +117,7 @@ function toggleMenu(menuId) {
         const isOpen = menu.classList.contains('open');
 
         // Tutup semua dahulu
-        document.querySelectorAll('.menu.open').forEach(el => {
+        document.querySelectorAll('.menu.open, .toggle-menu.open').forEach(el => {
             el.classList.remove('open');
         });
 
@@ -128,7 +128,10 @@ function toggleMenu(menuId) {
     }
 }
 
-// Butang toggle
+
+/* ============================================================
+ * Butang toggle: RSVP & Ucapan
+ * ========================================================== */
 document.getElementById('kehadiran-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
     toggleMenu('rsvp-menu');
@@ -139,7 +142,29 @@ document.getElementById('ucapan-btn')?.addEventListener('click', (e) => {
     toggleMenu('ucapan-menu');
 });
 
-// Butang "Tutup" dalam setiap menu
+
+/* ============================================================
+ * Butang toggle: Location, Music, Contact
+ * ========================================================== */
+document.getElementById('location-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('location-menu');
+});
+
+document.getElementById('music-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('music-menu');
+});
+
+document.getElementById('contact-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('contact-menu');
+});
+
+
+/* ============================================================
+ * Tutup menu bila klik ✕
+ * ========================================================== */
 document.querySelectorAll('.menu .tutup').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -147,15 +172,19 @@ document.querySelectorAll('.menu .tutup').forEach(btn => {
     });
 });
 
-// Klik luar tutup semua
+
+/* ============================================================
+ * Klik luar akan tutup semua menu
+ * ========================================================== */
 document.addEventListener('click', () => {
-    document.querySelectorAll('.menu.open').forEach(el => {
+    document.querySelectorAll('.menu.open, .toggle-menu.open').forEach(el => {
         el.classList.remove('open');
     });
 });
 
+
 /* ============================================================
- * (Optional) Kehadiran Alert
+ * Optional: Alert Sahkan Kehadiran
  * ========================================================== */
 document.getElementById("btn-hadir")?.addEventListener("click", () => {
     alert("Terima kasih! Jawapan kehadiran telah dihantar melalui Google Form.");
