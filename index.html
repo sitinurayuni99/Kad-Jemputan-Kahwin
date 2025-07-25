@@ -2,12 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Css Vendor -->
-    <link rel="stylesheet" href="./css/style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
     <title>Ayuni & Azim</title>
 </head>
 
@@ -28,7 +31,7 @@
         <!-- Intro Section -->
         <section class="intro">
             <div class="content">
-                <img src="./images/bismillah.png" alt="" class="fade-top-1">
+                <img src="./images/bismillah.png" alt="" class="fade-top-1" />
                 <p class="title fade-top-2">Walimatulurus</p>
                 <h2 class="fade-top-3">Ayuni</h2>
                 <h2 class="fade-top-3">&</h2>
@@ -44,7 +47,11 @@
 
         <!-- Event Info Section -->
         <section class="info">
-            <img src="./images/assalamualaikum-3.png" alt="" class="assalamualaikum reveal fade-bottom">
+            <img
+                src="./images/assalamualaikum-3.png"
+                alt=""
+                class="assalamualaikum reveal fade-bottom"
+            />
             <div class="event-info reveal fade-bottom">
                 <div class="one">
                     <div class="parent">
@@ -79,78 +86,80 @@
                 </div>
             </div>
             <!-- Aturcara & Countdown Section -->
-<div class="countdown reveal fade-bottom">
-    <!-- Countdown Timer -->
-    <div class="hero connect-page">
-        <div class="container">
-            <div class="hero-body">
-                <div class="campaign campaign-0">
-                    <div class="counter timer">
-                        <span class="title">Menghitung Hari</span>
-                        <div class="counter-boxes">
-                            <div class="count-box">
-                                <h1 class="value day">0</h1>
-                                <span>Hari</span>
-                            </div>
-                            <div class="count-box">
-                                <h1 class="value hour">0</h1>
-                                <span>Jam</span>
-                            </div>
-                            <div class="count-box">
-                                <h1 class="value minute">0</h1>
-                                <span>Minit</span>
-                            </div>
-                            <div class="count-box">
-                                <h1 class="value second">0</h1>
-                                <span>Saat</span>
+            <div class="countdown reveal fade-bottom">
+                <!-- Countdown Timer -->
+                <div class="hero connect-page">
+                    <div class="container">
+                        <div class="hero-body">
+                            <div class="campaign campaign-0">
+                                <div class="counter timer">
+                                    <span class="title">Menghitung Hari</span>
+                                    <div class="counter-boxes">
+                                        <div class="count-box">
+                                            <h1 class="value day">0</h1>
+                                            <span>Hari</span>
+                                        </div>
+                                        <div class="count-box">
+                                            <h1 class="value hour">0</h1>
+                                            <span>Jam</span>
+                                        </div>
+                                        <div class="count-box">
+                                            <h1 class="value minute">0</h1>
+                                            <span>Minit</span>
+                                        </div>
+                                        <div class="count-box">
+                                            <h1 class="value second">0</h1>
+                                            <span>Saat</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- Skrip Countdown -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Tetapkan tarikh dan masa majlis
-    const countDownDate = new Date("September 7, 2025 11:00:00").getTime();
+            <!-- Skrip Countdown -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Tetapkan tarikh dan masa majlis
+                    const countDownDate = new Date("September 7, 2025 11:00:00").getTime();
 
-    // Kira masa setiap saat
-    const countdownFunction = setInterval(function () {
-      const now = new Date().getTime();
-      const distance = countDownDate - now;
+                    // Kira masa setiap saat
+                    const countdownFunction = setInterval(function () {
+                        const now = new Date().getTime();
+                        const distance = countDownDate - now;
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor(
+                            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                        );
+                        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      const dayElem = document.querySelector(".value.day");
-      const hourElem = document.querySelector(".value.hour");
-      const minuteElem = document.querySelector(".value.minute");
-      const secondElem = document.querySelector(".value.second");
+                        const dayElem = document.querySelector(".value.day");
+                        const hourElem = document.querySelector(".value.hour");
+                        const minuteElem = document.querySelector(".value.minute");
+                        const secondElem = document.querySelector(".value.second");
 
-      if (dayElem && hourElem && minuteElem && secondElem) {
-        dayElem.innerText = days;
-        hourElem.innerText = hours;
-        minuteElem.innerText = minutes;
-        secondElem.innerText = seconds;
-      }
+                        if (dayElem && hourElem && minuteElem && secondElem) {
+                            dayElem.innerText = days;
+                            hourElem.innerText = hours;
+                            minuteElem.innerText = minutes;
+                            secondElem.innerText = seconds;
+                        }
 
-      if (distance < 0) {
-        clearInterval(countdownFunction);
-        const counterBox = document.querySelector(".counter");
-        if (counterBox) {
-          counterBox.innerHTML = "<h2>Majlis Telah Bermula</h2>";
-        }
-      }
-    }, 1000);
-  });
-</script>
-                             
+                        if (distance < 0) {
+                            clearInterval(countdownFunction);
+                            const counterBox = document.querySelector(".counter");
+                            if (counterBox) {
+                                counterBox.innerHTML = "<h2>Majlis Telah Bermula</h2>";
+                            }
+                        }
+                    }, 1000);
+                });
+            </script>
+
             <!-- Aturcara -->
             <div class="aturcara reveal fade-bottom">
                 <p class="title">Aturcara Majlis</p>
@@ -167,42 +176,44 @@
                     <p>4:00 Petang</p>
                 </div>
             </div>
-            
+
             <!-- Doa Section -->
             <div class="ucapan reveal fade-bottom">
-              <div class="container">
-                <div class="doa-box">
-                  <p class="arabic">
-                    بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
-                  </p>
-                  <p class="latin">
-                    Ya Allah Ya Rahman Ya Rahim,<br>
-                    Berkatilah majlis perkahwinan ini.<br>
-                    Limpahkan baraqah dan rahmatMu kepada kedua mempelai ini.<br>
-                    Kurniakanlah mereka zuriat yang soleh dan solehah.<br>
-                    Kekalkanlah jodoh mereka hingga ke jannah.
-                </p>
-                <p class="arabic" style="margin-top: 20px;">
-                  بَارَكَ اللهُ لَكُماَ وَبَارَكَ عَلَيْكُماَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
-                </p>
-              </div>
+                <div class="container">
+                    <div class="doa-box">
+                        <p class="arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+                        <p class="latin">
+                            Ya Allah Ya Rahman Ya Rahim,<br />
+                            Berkatilah majlis perkahwinan ini.<br />
+                            Limpahkan baraqah dan rahmatMu kepada kedua mempelai ini.<br />
+                            Kurniakanlah mereka zuriat yang soleh dan solehah.<br />
+                            Kekalkanlah jodoh mereka hingga ke jannah.
+                        </p>
+                        <p class="arabic" style="margin-top: 20px;">
+                            بَارَكَ اللهُ لَكُماَ وَبَارَكَ عَلَيْكُماَ وَجَمَعَ بَيْنَكُمَا فِي
+                            خَيْرٍ
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
 
-            <img src="./images/divider.png" alt="" class="divider reveal fade-bottom">
-            
+            <img src="./images/divider.png" alt="" class="divider reveal fade-bottom" />
+
             <div class="rsvp">
-              <h2 class="reveal fade-bottom">Ucapan</h2>
-              <div class="container-message reveal fade-bottom"><div class="content"></div></div>
-              <div class="beri-ucapan-button reveal fade-bottom">
-          </section>
-        
+                <h2 class="reveal fade-bottom">Ucapan</h2>
+                <div class="container-message reveal fade-bottom">
+                    <div class="content"></div>
+                </div>
+                <div class="beri-ucapan-button reveal fade-bottom"></div>
+            </div>
+        </section>
+
         <section class="footer">
             <ul class="menu">
-                <li id="location-btn"><i class='bx bx-map'></i></li>
-                <li id="music-btn"><i class='bx bx-music'></i></li>
-                <li id="rsvp-btn"><i class='bx bx-envelope'></i></li>
-                <li id="contact-btn"><i class='bx bx-phone'></i></li>
+                <li id="location-btn"><i class="bx bx-map"></i></li>
+                <li id="music-btn"><i class="bx bx-music"></i></li>
+                <li id="rsvp-btn"><i class="bx bx-envelope"></i></li>
+                <li id="contact-btn"><i class="bx bx-phone"></i></li>
             </ul>
         </section>
     </div>
@@ -216,7 +227,7 @@
             <p>47000 Sg Buloh, Selangor</p>
             <div class="button" onclick="openGoogleMaps()">
                 <button class="google">
-                    <i class='bx bxl-google'></i>
+                    <i class="bx bxl-google"></i>
                     <span>Maps</span>
                 </button>
                 <button class="waze" onclick="openWaze()">
@@ -233,23 +244,25 @@
             <p>Beautiful in White x Canon in D</p>
             <p>(Piano Cover by Riyandi Kusuma)</p>
             <audio id="audio-player" controls autoplay loop>
-                <source type="audio/mp3"
-                    src="./music/Beautiful in White x Canon in D (Piano Cover by Riyandi Kusuma).mp3">
+                <source
+                    type="audio/mp3"
+                    src="./music/Beautiful in White x Canon in D (Piano Cover by Riyandi Kusuma).mp3"
+                />
             </audio>
         </div>
     </div>
-    
+
     <div id="rsvp-menu" class="toggle-menu">
         <div class="rsvp">
             <h1>Kehadiran</h1>
             <p>Sila sahkan kehadiran anda:</p>
             <div class="button">
                 <button type="button" id="btn-hadir">
-                    <i class='bx bx-check'></i>
+                    <i class="bx bx-check"></i>
                     <span>Hadir</span>
                 </button>
                 <button type="button" id="btn-tidak-hadir">
-                    <i class='bx bx-x'></i>
+                    <i class="bx bx-x"></i>
                     <span>Tidak Hadir</span>
                 </button>
             </div>
@@ -263,54 +276,70 @@
             <div class="content">
                 <div class="person">
                     <div class="first-section">
-                        <i class='bx bxs-user-circle'></i>
+                        <i class="bx bxs-user-circle"></i>
                         <div class="name">
                             <span>Tamsir</span>
                             <span>Bapa Pengantin</span>
                         </div>
                     </div>
                     <div class="second-section">
-                        <button onclick="makePhoneCall('+60133338293')"><i class='bx bx-phone'></i></button>
-                        <button onclick="openWhatsApp('+60133338293')"><i class='bx bxl-whatsapp'></i></button>
+                        <button onclick="makePhoneCall('+60133338293')">
+                            <i class="bx bx-phone"></i>
+                        </button>
+                        <button onclick="openWhatsApp('+60133338293')">
+                            <i class="bx bxl-whatsapp"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="person">
                     <div class="first-section">
-                        <i class='bx bxs-user-circle'></i>
+                        <i class="bx bxs-user-circle"></i>
                         <div class="name">
                             <span>Afizul</span>
                             <span>Abang Pengantin</span>
                         </div>
                     </div>
                     <div class="second-section">
-                        <button onclick="makePhoneCall('+60162474598')"><i class='bx bx-phone'></i></button>
-                        <button onclick="openWhatsApp('+60162474598')"><i class='bx bxl-whatsapp'></i></button>
+                        <button onclick="makePhoneCall('+60162474598')">
+                            <i class="bx bx-phone"></i>
+                        </button>
+                        <button onclick="openWhatsApp('+60162474598')">
+                            <i class="bx bxl-whatsapp"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="person">
                     <div class="first-section">
-                        <i class='bx bxs-user-circle'></i>
+                        <i class="bx bxs-user-circle"></i>
                         <div class="name">
                             <span>Imran</span>
                             <span>Abang Pengantin</span>
                         </div>
                     </div>
                     <div class="second-section">
-                        <button onclick="makePhoneCall('+60173462173')"><i class='bx bx-phone'></i></button>
-                        <button onclick="openWhatsApp('+60173462173')"><i class='bx bxl-whatsapp'></i></button>
-                         </div>
+                        <button onclick="makePhoneCall('+60173462173')">
+                            <i class="bx bx-phone"></i>
+                        </button>
+                        <button onclick="openWhatsApp('+60173462173')">
+                            <i class="bx bxl-whatsapp"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="person">
                     <div class="first-section">
-                        <i class='bx bxs-user-circle'></i>
+                        <i class="bx bxs-user-circle"></i>
                         <div class="name">
                             <span>Izaat</span>
                             <span>Abang Pengantin</span>
                         </div>
                     </div>
                     <div class="second-section">
-                        <button onclick="makePhoneCall('+601124877212')"><i class='bx bx-phone'></i></button>
-                        <button onclick="openWhatsApp('+601124877212')"><i class='bx bxl-whatsapp'></i></button>
+                        <button onclick="makePhoneCall('+601124877212')">
+                            <i class="bx bx-phone"></i>
+                        </button>
+                        <button onclick="openWhatsApp('+601124877212')">
+                            <i class="bx bxl-whatsapp"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -318,31 +347,32 @@
     </div>
 
     <script src="./js/main.js"></script>
+
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const btnHadir = document.getElementById("btn-hadir");
-        const btnTidak = document.getElementById("btn-tidak-hadir");
-        const msg = document.getElementById("response-msg");
+        document.addEventListener("DOMContentLoaded", function () {
+            const btnHadir = document.getElementById("btn-hadir");
+            const btnTidak = document.getElementById("btn-tidak-hadir");
+            const msg = document.getElementById("response-msg");
 
-        btnHadir?.addEventListener("click", function () {
-          submitRSVP("hadir");
+            btnHadir?.addEventListener("click", function () {
+                submitRSVP("hadir");
+            });
+
+            btnTidak?.addEventListener("click", function () {
+                submitRSVP("tidak");
+            });
+
+            function submitRSVP(status) {
+                const responseText =
+                    status === "hadir"
+                        ? "Terima kasih kerana mengesahkan kehadiran!"
+                        : "Terima kasih. Mohon maaf kerana tidak dapat hadir.";
+                msg.innerText = responseText;
+
+                btnHadir.disabled = true;
+                btnTidak.disabled = true;
+            }
         });
-
-        btnTidak?.addEventListener("click", function () {
-          submitRSVP("tidak");
-        });
-
-        function submitRSVP(status) {
-          const responseText =
-            status === "hadir"
-              ? "Terima kasih kerana mengesahkan kehadiran!"
-              : "Terima kasih. Mohon maaf kerana tidak dapat hadir.";
-          msg.innerText = responseText;
-
-          btnHadir.disabled = true;
-          btnTidak.disabled = true;
-        }
-      });
     </script>
 </body>
 
