@@ -148,80 +148,82 @@ setInterval(createPetal, petalInterval); // Create petals every 100 milliseconds
 
 
 /** =====================================================
- *  Toggle Menu
-  ======================================================= */
-// ================================== Calendar ==================================
-// Get all buttons and their corresponding menus
+ *  Toggle RSVP & Ucapan Menu
+ ======================================================= */
+
+// Pastikan semua ID menu dimasukkan
 const toggleButtons = {
-    'calendar-btn': 'calendar-menu',
     'location-btn': 'location-menu',
     'music-btn': 'music-menu',
-    'rsvp-btn': 'rsvp-menu',
-    'ucapan-btn': 'ucapan-menu',
     'contact-btn': 'contact-menu',
     'kehadiran-btn': 'rsvp-menu',
-    'btn-hadir': 'success-menu'
-    // Add other button-to-menu mappings here
+    'ucapan-btn': 'ucapan-menu'
 };
 
-// Function to toggle a menu open/close
+// Fungsi buka/tutup menu
 function toggleMenu(menuId, event) {
-    event.stopPropagation(); // Prevent click from propagating
+    event.stopPropagation();
     const menu = document.getElementById(menuId);
 
     if (menu.classList.contains('open')) {
-        menu.classList.remove('open'); // Close the menu
+        menu.classList.remove('open');
     } else {
-        // Close all other menus first
         closeAllMenus();
-        menu.classList.add('open'); // Open the menu
+        menu.classList.add('open');
     }
 }
 
-// Function to close all menus
+// Tutup semua menu
 function closeAllMenus() {
     for (const menuId of Object.values(toggleButtons)) {
         const menu = document.getElementById(menuId);
-        if (menu.classList.contains('open')) {
-            menu.classList.remove('open'); // Close the menu
+        if (menu && menu.classList.contains('open')) {
+            menu.classList.remove('open');
         }
     }
-}
 
-// Add click event listeners to all toggle buttons
-for (const [buttonId, menuId] of Object.entries(toggleButtons)) {
-    const button = document.getElementById(buttonId);
-    button.addEventListener('click', (event) => toggleMenu(menuId, event));
-}
-
-// Add a global click handler to close all menus when clicking outside
-document.addEventListener('click', () => closeAllMenus());
-
-// Prevent clicks within menus from closing them
-for (const menuId of Object.values(toggleButtons)) {
-    const menu = document.getElementById(menuId);
-    menu.addEventListener('click', (event) => event.stopPropagation());
-}
-
-// Function to close a specific menu
-function closeMenu(menuId) {
-    const menu = document.getElementById(menuId);
-    if (menu.classList.contains('open')) {
-        menu.classList.remove('open'); // Close the menu
+    // Tambahan: Tutup success menu jika terbuka
+    const success = document.getElementById('success-menu');
+    if (success && success.classList.contains('open')) {
+        success.classList.remove('open');
     }
 }
 
-// Add event listener for the close button inside the ucapan menu
-const closeButton = document.querySelector('#ucapan-menu .tutup');
-if (closeButton) {
-    closeButton.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent this from propagating and triggering other closures
-        closeMenu('ucapan-menu'); // Close the specific menu
-    });
+// Klik luar menu => tutup
+document.addEventListener('click', () => closeAllMenus());
+
+// Elak tutup bila klik dalam menu
+for (const menuId of Object.values(toggleButtons)) {
+    const menu = document.getElementById(menuId);
+    if (menu) {
+        menu.addEventListener('click', (event) => event.stopPropagation());
+    }
 }
 
-// Function to open RSVP
-const kehadiranBtn = document.getElementById("kehadiran-btn");
+// Assign semua butang toggle ke fungsinya
+for (const [buttonId, menuId] of Object.entries(toggleButtons)) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.addEventListener('click', (event) => toggleMenu(menuId, event));
+    }
+}
+
+// Fungsi tutup menu secara spesifik
+function closeMenu(menuId) {
+    const menu = document.getElementById(menuId);
+    if (menu && menu.classList.contains('open')) {
+        menu.classList.remove('open');
+    }
+}
+
+// Tutup Ucapan menu bila klik .tutup
+const ucapanClose = document.querySelector('#ucapan-menu .tutup');
+if (ucapanClose) {
+    ucapanClose.addEventListener('click', (event) => {
+        event.stopPropagation();
+        closeMenu('ucapan-menu');
+    });
+}
 
 
 
