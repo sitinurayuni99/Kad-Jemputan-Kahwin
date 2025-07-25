@@ -2,8 +2,8 @@
  * Buka overlay dan main muzik
  * ========================================================== */
 document.getElementById("toggle-content").addEventListener("click", function () {
-    var wrapper = document.querySelector(".wrapper");
-    var card = document.querySelector(".card");
+    const wrapper = document.querySelector(".wrapper");
+    const card = document.querySelector(".card");
 
     wrapper.classList.add("hidden");
 
@@ -116,23 +116,21 @@ function toggleMenu(menuId) {
     if (menu) {
         const isOpen = menu.classList.contains('open');
 
-        // Tutup semua dahulu
-        document.querySelectorAll('.toggle-menu.open, .form-section').forEach(el => {
+        // Tutup semua menu lain dahulu
+        document.querySelectorAll('.toggle-menu.open').forEach(el => {
             el.classList.remove('open');
-            el.style.display = 'none';
         });
 
-        // Buka kalau belum buka
+        // Toggle menu ini
         if (!isOpen) {
             menu.classList.add('open');
-            menu.style.display = 'block';
         }
     }
 }
 
 
 /* ============================================================
- * Toggle Butang: Footer (Location, Music, Contact)
+ * Toggle Butang Footer: Location, Music, Contact
  * ========================================================== */
 document.getElementById('location-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -151,26 +149,27 @@ document.getElementById('contact-btn')?.addEventListener('click', (e) => {
 
 
 /* ============================================================
- * Toggle Butang: RSVP & Ucapan
+ * Toggle Butang RSVP & Ucapan
  * ========================================================== */
 document.getElementById('kehadiran-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
-
-    const rsvpForm = document.getElementById('rsvp-form');
-    const ucapanForm = document.getElementById('ucapan-form');
-
-    rsvpForm.style.display = rsvpForm.style.display === 'block' ? 'none' : 'block';
-    ucapanForm.style.display = 'none';
+    toggleMenu('rsvp-menu');
 });
 
 document.getElementById('ucapan-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
+    toggleMenu('ucapan-menu');
+});
 
-    const rsvpForm = document.getElementById('rsvp-form');
-    const ucapanForm = document.getElementById('ucapan-form');
 
-    ucapanForm.style.display = ucapanForm.style.display === 'block' ? 'none' : 'block';
-    rsvpForm.style.display = 'none';
+/* ============================================================
+ * Tutup menu bila klik ✕
+ * ========================================================== */
+document.querySelectorAll('.toggle-menu .tutup').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        btn.closest('.toggle-menu').classList.remove('open');
+    });
 });
 
 
@@ -178,8 +177,7 @@ document.getElementById('ucapan-btn')?.addEventListener('click', (e) => {
  * Klik luar akan tutup semua menu
  * ========================================================== */
 document.addEventListener('click', () => {
-    document.querySelectorAll('.toggle-menu.open, .form-section').forEach(el => {
+    document.querySelectorAll('.toggle-menu.open').forEach(el => {
         el.classList.remove('open');
-        el.style.display = 'none';
     });
 });
