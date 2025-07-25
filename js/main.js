@@ -76,7 +76,7 @@ const maxPetals = 70;
 const petalInterval = 100;
 
 function createPetal() {
-    if (petalContainer.childElementCount < maxPetals) {
+    if (petalContainer && petalContainer.childElementCount < maxPetals) {
         const petal = document.createElement('div');
         petal.className = 'petal';
 
@@ -100,7 +100,7 @@ function createPetal() {
         petalContainer.appendChild(petal);
 
         setTimeout(() => {
-            petalContainer.removeChild(petal);
+            petal.remove();
         }, duration * 1000);
     }
 }
@@ -108,83 +108,61 @@ setInterval(createPetal, petalInterval);
 
 
 /* ============================================================
- * Toggle Menu (Location, Music, Contact, RSVP, Ucapan)
+ * Toggle Menu (RSVP & Ucapan Google Form)
  * ========================================================== */
-const toggleButtons = {
-    'location-btn': 'location-menu',
-    'music-btn': 'music-menu',
-    'contact-btn': 'contact-menu',
-    'kehadiran-btn': 'rsvp-menu',
-    'ucapan-btn': 'ucapan-menu'
-};
-
-function toggleMenu(menuId, event) {
-    event.stopPropagation();
+function toggleMenu(menuId) {
     const menu = document.getElementById(menuId);
 
-    if (menu.classList.contains('open')) {
-        menu.classList.remove('open');
-    } else {
-        closeAllMenus();
-        menu.classList.add('open');
-    }
-}
+    if (menu) {
+        const isOpen = menu.classList.contains('open');
 
-function closeAllMenus() {
-    for (const menuId of Object.values(toggleButtons)) {
-        const menu = document.getElementById(menuId);
-        if (menu && menu.classList.contains('open')) {
-            menu.classList.remove('open');
+        // Tutup semua dahulu
+        document.querySelectorAll('.menu.open').forEach(el => {
+            el.classList.remove('open');
+        });
+
+        // Buka kalau belum buka
+        if (!isOpen) {
+            menu.classList.add('open');
         }
     }
-
-    const success = document.getElementById('success-menu');
-    if (success && success.classList.contains('open')) {
-        success.classList.remove('open');
-    }
 }
 
-document.addEventListener('click', () => closeAllMenus());
+// Butang toggle
+document.getElementById('kehadiran-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('rsvp-menu');
+});
 
-for (const menuId of Object.values(toggleButtons)) {
-    const menu = document.getElementById(menuId);
-    if (menu) {
-        menu.addEventListener('click', (event) => event.stopPropagation());
-    }
-}
+document.getElementById('ucapan-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('ucapan-menu');
+});
 
-for (const [buttonId, menuId] of Object.entries(toggleButtons)) {
-    const button = document.getElementById(buttonId);
-    if (button) {
-        button.addEventListener('click', (event) => toggleMenu(menuId, event));
-    }
-}
-
-function closeMenu(menuId) {
-    const menu = document.getElementById(menuId);
-    if (menu && menu.classList.contains('open')) {
-        menu.classList.remove('open');
-    }
-}
-
-const ucapanClose = document.querySelector('#ucapan-menu .tutup');
-if (ucapanClose) {
-    ucapanClose.addEventListener('click', (event) => {
-        event.stopPropagation();
-        closeMenu('ucapan-menu');
+// Butang "Tutup" dalam setiap menu
+document.querySelectorAll('.menu .tutup').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        btn.closest('.menu').classList.remove('open');
     });
-}
+});
 
+// Klik luar tutup semua
+document.addEventListener('click', () => {
+    document.querySelectorAll('.menu.open').forEach(el => {
+        el.classList.remove('open');
+    });
+});
 
 /* ============================================================
- * (Optional) Kehadiran Counter — Jika Guna PHP
+ * (Optional) Kehadiran Alert
  * ========================================================== */
 document.getElementById("btn-hadir")?.addEventListener("click", () => {
     alert("Terima kasih! Jawapan kehadiran telah dihantar melalui Google Form.");
-    closeMenu('rsvp-menu');
+    toggleMenu('rsvp-menu');
 });
 
 document.getElementById("btn-tidak-hadir")?.addEventListener("click", () => {
     alert("Terima kasih! Maklum balas anda telah dihantar melalui Google Form.");
-    closeMenu('rsvp-menu');
+    toggleMenu('rsvp-menu');
 });
