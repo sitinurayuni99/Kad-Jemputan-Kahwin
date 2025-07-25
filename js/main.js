@@ -2,8 +2,8 @@
  * Buka overlay dan main muzik
  * ========================================================== */
 document.getElementById("toggle-content").addEventListener("click", function () {
-    const wrapper = document.querySelector(".wrapper");
-    const card = document.querySelector(".card");
+    var wrapper = document.querySelector(".wrapper");
+    var card = document.querySelector(".card");
 
     wrapper.classList.add("hidden");
 
@@ -17,7 +17,6 @@ document.getElementById("toggle-content").addEventListener("click", function () 
         console.log("Audio autoplay disekat: ", e);
     });
 });
-
 
 /* ============================================================
  * Lokasi: Google Maps & Waze
@@ -34,7 +33,6 @@ function openWaze() {
     window.open(`waze://?ll=${latitude},${longitude}&navigate=yes`, "_blank");
 }
 
-
 /* ============================================================
  * Hubungi: WhatsApp & Panggilan
  * ========================================================== */
@@ -45,7 +43,6 @@ function openWhatsApp(phoneNumber) {
 function makePhoneCall(phoneNumber) {
     window.location.href = `tel:${phoneNumber}`;
 }
-
 
 /* ============================================================
  * Scroll Reveal
@@ -66,7 +63,6 @@ function reveal() {
     }
 }
 window.addEventListener("scroll", reveal);
-
 
 /* ============================================================
  * Background Bunga (Petal)
@@ -106,7 +102,6 @@ function createPetal() {
 }
 setInterval(createPetal, petalInterval);
 
-
 /* ============================================================
  * Toggle Menu Function
  * ========================================================== */
@@ -116,21 +111,22 @@ function toggleMenu(menuId) {
     if (menu) {
         const isOpen = menu.classList.contains('open');
 
-        // Tutup semua menu lain dahulu
-        document.querySelectorAll('.toggle-menu.open').forEach(el => {
+        // Tutup semua dahulu
+        document.querySelectorAll('.toggle-menu.open, .form-section').forEach(el => {
             el.classList.remove('open');
+            el.style.display = 'none';
         });
 
-        // Toggle menu ini
+        // Buka kalau belum buka
         if (!isOpen) {
             menu.classList.add('open');
+            menu.style.display = 'block';
         }
     }
 }
 
-
 /* ============================================================
- * Toggle Butang Footer: Location, Music, Contact
+ * Toggle Butang Footer: Location, Music, Contact, RSVP
  * ========================================================== */
 document.getElementById('location-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -147,37 +143,40 @@ document.getElementById('contact-btn')?.addEventListener('click', (e) => {
     toggleMenu('contact-menu');
 });
 
+document.getElementById('rsvp-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('rsvp-menu');
+});
 
 /* ============================================================
  * Toggle Butang RSVP & Ucapan
  * ========================================================== */
 document.getElementById('kehadiran-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
-    toggleMenu('rsvp-menu');
+
+    const rsvpForm = document.getElementById('rsvp-form');
+    const ucapanForm = document.getElementById('ucapan-form');
+
+    rsvpForm.style.display = rsvpForm.style.display === 'block' ? 'none' : 'block';
+    ucapanForm.style.display = 'none';
 });
 
 document.getElementById('ucapan-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
-    toggleMenu('ucapan-menu');
+
+    const rsvpForm = document.getElementById('rsvp-form');
+    const ucapanForm = document.getElementById('ucapan-form');
+
+    ucapanForm.style.display = ucapanForm.style.display === 'block' ? 'none' : 'block';
+    rsvpForm.style.display = 'none';
 });
-
-
-/* ============================================================
- * Tutup menu bila klik ✕
- * ========================================================== */
-document.querySelectorAll('.toggle-menu .tutup').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        btn.closest('.toggle-menu').classList.remove('open');
-    });
-});
-
 
 /* ============================================================
  * Klik luar akan tutup semua menu
  * ========================================================== */
 document.addEventListener('click', () => {
-    document.querySelectorAll('.toggle-menu.open').forEach(el => {
+    document.querySelectorAll('.toggle-menu.open, .form-section').forEach(el => {
         el.classList.remove('open');
+        el.style.display = 'none';
     });
 });
