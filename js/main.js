@@ -126,7 +126,7 @@ function toggleMenu(menuId) {
 }
 
 /* ============================================================
- * Toggle Butang Footer: Location, Music, Contact, RSVP
+ * Toggle Butang Footer: Location, Music, RSVP, Contact
  * ========================================================== */
 document.getElementById('location-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -138,14 +138,14 @@ document.getElementById('music-btn')?.addEventListener('click', (e) => {
     toggleMenu('music-menu');
 });
 
-document.getElementById('contact-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('contact-menu');
-});
-
 document.getElementById('rsvp-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
     toggleMenu('rsvp-menu');
+});
+
+document.getElementById('contact-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('contact-menu');
 });
 
 /* ============================================================
