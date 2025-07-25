@@ -605,7 +605,7 @@ section {
 
 
 .doa-box {
-  background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent */
+  background-color: rgba(255, 255, 255, 0.6);
   padding: 25px 30px;
   margin: 30px auto;
   border: 2px solid #000;
@@ -674,14 +674,14 @@ section {
 }
 
 .card section.info .ucapan .content {
-    position: relative; /* Gunakan relative bukan absolute supaya ikut aliran biasa */
+    position: relative;
     text-align: center;
     width: 85%;
     padding: 20px;
     border-radius: 10px;
     color: black;
     border: 1px solid black; /* ✅ Border hitam */
-    background-color: transparent; /* ❌ Tiada overlay putih */
+    background-color: transparent;
 }
 
 .card section.info .ucapan .content p {
