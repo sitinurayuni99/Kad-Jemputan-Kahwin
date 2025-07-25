@@ -1046,3 +1046,51 @@ section {
 /*============================================================================================
     # Image Carousel
 ============================================================================================*/
+/*===========================
+    # RSVP & Ucapan Menu
+===========================*/
+.menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  z-index: 999;
+  background: white;
+  width: 90%;
+  max-width: 420px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.menu-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #302b63;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+}
+
+.menu-header .tutup {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: #302b63;
+}
