@@ -2,8 +2,8 @@
  * Buka overlay dan main muzik
  * ========================================================== */
 document.getElementById("toggle-content").addEventListener("click", function () {
-    const wrapper = document.querySelector(".wrapper");
-    const card = document.querySelector(".card");
+    var wrapper = document.querySelector(".wrapper");
+    var card = document.querySelector(".card");
 
     wrapper.classList.add("hidden");
 
@@ -13,12 +13,11 @@ document.getElementById("toggle-content").addEventListener("click", function () 
     }, { once: true });
 
     const audioPlayer = document.getElementById("audio-player");
-    if (audioPlayer) {
-        audioPlayer.play().catch(e => {
-            console.log("Audio autoplay disekat: ", e);
-        });
-    }
+    audioPlayer.play().catch(e => {
+        console.log("Audio autoplay disekat: ", e);
+    });
 });
+
 
 /* ============================================================
  * Lokasi: Google Maps & Waze
@@ -32,8 +31,9 @@ function openGoogleMaps() {
 function openWaze() {
     const latitude = 3.1927426;
     const longitude = 101.5504211;
-    window.open(`https://waze.com/ul?ll=${latitude},${longitude}&navigate=yes`, "_blank");
+    window.open(`waze://?ll=${latitude},${longitude}&navigate=yes`, "_blank");
 }
+
 
 /* ============================================================
  * Hubungi: WhatsApp & Panggilan
@@ -46,11 +46,13 @@ function makePhoneCall(phoneNumber) {
     window.location.href = `tel:${phoneNumber}`;
 }
 
+
 /* ============================================================
  * Scroll Reveal
  * ========================================================== */
 function reveal() {
     const reveals = document.querySelectorAll(".reveal");
+
     for (let i = 0; i < reveals.length; i++) {
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
@@ -64,6 +66,7 @@ function reveal() {
     }
 }
 window.addEventListener("scroll", reveal);
+
 
 /* ============================================================
  * Background Bunga (Petal)
@@ -103,41 +106,33 @@ function createPetal() {
 }
 setInterval(createPetal, petalInterval);
 
+
 /* ============================================================
- * Fungsi Buka/Tutup Toggle Menu
+ * Toggle Menu Function
  * ========================================================== */
 function toggleMenu(menuId) {
     const menu = document.getElementById(menuId);
+
     if (menu) {
         const isOpen = menu.classList.contains('open');
 
         // Tutup semua dahulu
-        document.querySelectorAll('.toggle-menu.open').forEach(el => {
+        document.querySelectorAll('.toggle-menu.open, .form-section').forEach(el => {
             el.classList.remove('open');
+            el.style.display = 'none';
         });
 
         // Buka kalau belum buka
         if (!isOpen) {
             menu.classList.add('open');
+            menu.style.display = 'block';
         }
     }
 }
 
-/* ============================================================
- * Butang toggle: RSVP & Ucapan
- * ========================================================== */
-document.getElementById('kehadiran-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('rsvp-menu');
-});
-
-document.getElementById('ucapan-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('ucapan-menu');
-});
 
 /* ============================================================
- * Butang toggle: Location, Music, Contact
+ * Toggle Butang: Footer (Location, Music, Contact)
  * ========================================================== */
 document.getElementById('location-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -154,29 +149,37 @@ document.getElementById('contact-btn')?.addEventListener('click', (e) => {
     toggleMenu('contact-menu');
 });
 
+
 /* ============================================================
- * Tutup semua menu bila klik luar
+ * Toggle Butang: RSVP & Ucapan
+ * ========================================================== */
+document.getElementById('kehadiran-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    const rsvpForm = document.getElementById('rsvp-form');
+    const ucapanForm = document.getElementById('ucapan-form');
+
+    rsvpForm.style.display = rsvpForm.style.display === 'block' ? 'none' : 'block';
+    ucapanForm.style.display = 'none';
+});
+
+document.getElementById('ucapan-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    const rsvpForm = document.getElementById('rsvp-form');
+    const ucapanForm = document.getElementById('ucapan-form');
+
+    ucapanForm.style.display = ucapanForm.style.display === 'block' ? 'none' : 'block';
+    rsvpForm.style.display = 'none';
+});
+
+
+/* ============================================================
+ * Klik luar akan tutup semua menu
  * ========================================================== */
 document.addEventListener('click', () => {
-    document.querySelectorAll('.toggle-menu.open').forEach(el => {
+    document.querySelectorAll('.toggle-menu.open, .form-section').forEach(el => {
         el.classList.remove('open');
+        el.style.display = 'none';
     });
-});
-
-/* Elakkan menu tertutup bila klik dalam kandungan */
-document.querySelectorAll('.toggle-menu').forEach(menu => {
-    menu.addEventListener('click', e => e.stopPropagation());
-});
-
-/* ============================================================
- * Optional: Alert Sahkan Kehadiran
- * ========================================================== */
-document.getElementById("btn-hadir")?.addEventListener("click", () => {
-    alert("Terima kasih! Jawapan kehadiran telah dihantar melalui Google Form.");
-    toggleMenu('rsvp-menu');
-});
-
-document.getElementById("btn-tidak-hadir")?.addEventListener("click", () => {
-    alert("Terima kasih! Maklum balas anda telah dihantar melalui Google Form.");
-    toggleMenu('rsvp-menu');
 });
