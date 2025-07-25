@@ -196,18 +196,41 @@
                     <div class="content">
                     </div>
                 </div>
-                <div class="beri-ucapan-button reveal fade-bottom">
-                    <button id="kehadiran-btn">
-                        <i class='bx bxs-check-square'></i>
-                        <span>Sahkan Kehadiran</span>
-                    </button>
-                    <button id="ucapan-btn">
-                        <i class='bx bxs-pen'></i>
-                        <span>Berikan Ucapan</span>
-                    </button>
-                </div>
-            </div>
-        </section>
+              <!-- RSVP Popup -->
+              <div id="rsvp-menu" class="toggle-menu">
+                <div class="popup-content">
+                  <h2>Sahkan Kehadiran</h2>
+                  <p>Sila pilih kehadiran anda ke majlis:</p>
+                  <div class="button-group">
+                    <button id="btn-hadir">
+                     <i class='bx bxs-smile'></i>
+                     <span>Hadir</span>
+                   </button>
+                   <button id="btn-tidak-hadir">
+                     <i class='bx bxs-sad'></i>
+                     <span>Tidak Hadir</span>
+                   </button>
+                 </div>
+                 <div class="tutup">Tutup</div>
+             </div>
+         </div>
+
+               <!-- Ucapan Popup -->
+               <div id="ucapan-menu" class="toggle-menu">
+                 <div class="popup-content">
+                   <h2>Berikan Ucapan</h2>
+                   <form id="form-ucapan" action="insert_msg.php" method="POST">
+                     <input type="text" name="name" placeholder="Nama anda" required>
+                     <textarea name="message" placeholder="Ucapan anda" rows="4" required></textarea>
+                     <button type="submit">
+                       <i class='bx bxs-send'></i>
+                       <span>Hantar</span>
+                     </button>
+                   </form>
+                   <div class="tutup">Tutup</div>
+                 </div>
+               </div>
+
         <section class="footer">
             <ul class="menu">
                 <li id="location-btn"><i class='bx bx-map'></i></li>
