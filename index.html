@@ -196,44 +196,55 @@
                     <div class="content"></div>
                 </div>
                 <div class="beri-ucapan-button reveal fade-bottom">
-                    <button id="kehadiran-btn">
-                        <i class='bx bxs-check-square'></i>
-                        <span>Sahkan Kehadiran</span>
-                    </button>
-                    <button id="ucapan-btn">
-                        <i class='bx bxs-pen'></i>
-                        <span>Berikan Ucapan</span>
-                    </button>
+                <!-- Butang RSVP & Ucapan -->
+                <div class="beri-ucapan-button reveal fade-bottom">
+                  <button id="kehadiran-btn">
+                    <i class='bx bxs-check-square'></i>
+                    <span>Sahkan Kehadiran</span>
+                  </button>
+                  <button id="ucapan-btn">
+                    <i class='bx bxs-pen'></i>
+                    <span>Berikan Ucapan</span>
+                  </button>
                 </div>
                 
-                   <!-- MENU RSVP (Google Form) -->
-                    <div class="toggle-menu" id="rsvp-menu">
-                      <div class="location">
-                        <h1>Sahkan Kehadiran</h1>
-                        <div class="menu-content">
-                          <iframe 
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSf3Dxyc_lI6C02riEGgphWBI64cHb-vwHnNDGaFYk0JdVfdrQ/viewform?embedded=true" 
-                            width="100%" height="650" frameborder="0" marginheight="0" marginwidth="0" style="border:none;">
-                            Loading…
-                          </iframe>
-                        </div>
-                      </div>
+                <!-- Pop-up RSVP Form -->
+                <div class="toggle-menu" id="rsvp-menu">
+                  <div class="location">
+                    <h1>Sahkan Kehadiran</h1>
+                    <div class="menu-content" style="width: 100%; max-width: 100%;">
+                      <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSf3Dxyc_lI6C02riEGgphWBI64cHb-vwHnNDGaFYk0JdVfdrQ/viewform?embedded=true" 
+                        width="100%" 
+                        height="650" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0"
+                        style="border: none;">
+                        Loading…
+                      </iframe>
                     </div>
-                    
-                    <!-- MENU UCAPAN (Google Form) -->
-                    <div class="toggle-menu" id="ucapan-menu">
-                      <div class="location">
-                        <h1>Beri Ucapan</h1>
-                        <div class="menu-content">
-                          <iframe 
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSc462X3YM04cmqEPVbh_mpF7BlhFdXSMPCPckJok9gfqa7eBA/viewform?embedded=true" 
-                            width="100%" height="560" frameborder="0" marginheight="0" marginwidth="0" style="border:none;">
-                            Memuatkan…
-                          </iframe>
-                        </div>
-                      </div>
+                  </div>
+                </div>
+                
+                <!-- Pop-up Ucapan Form -->
+                <div class="toggle-menu" id="ucapan-menu">
+                  <div class="location">
+                    <h1>Berikan Ucapan</h1>
+                    <div class="menu-content" style="width: 100%; max-width: 100%;">
+                      <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSc462X3YM04cmqEPVbh_mpF7BlhFdXSMPCPckJok9gfqa7eBA/viewform?embedded=true" 
+                        width="100%" 
+                        height="560" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0"
+                        style="border: none;">
+                        Loading…
+                      </iframe>
                     </div>
-
+                  </div>
+                </div>
 
         <section class="footer">
             <ul class="menu">
