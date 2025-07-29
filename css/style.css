@@ -739,22 +739,22 @@ section {
     # Bottom Toggle
 ============================================================================================*/
 .toggle-menu {
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    max-width: 400px;
-    margin: 0 auto;
-    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
-    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    transition: bottom 0.4s;
-    z-index: 1000;
-    border-radius: 10px;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 9999;
+  padding: 20px;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 .toggle-menu.open {
-    bottom: 10%;
+  display: block;
 }
 
 .toggle-menu h1 {
