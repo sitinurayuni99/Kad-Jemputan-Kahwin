@@ -840,42 +840,57 @@ section {
 /*===========================
     # RSVP
 ===========================*/
-display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
-    width: 100%;
-    margin-top: 10px;
+#rsvp-menu {
+  padding: 30px 20px;
+  background-color: #fff8f1;
+  text-align: center;
 }
 
-.toggle-menu .rsvp .button button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60%;
-    padding: 8px 6px;
-    border: none;
-    border-radius: 5px;
-    gap: 5px;
-    cursor: pointer;
-    background: #F8F4FF;
+.rsvp-section h1 {
+  font-size: 24px;
+  color: #8c4b36;
+  margin-bottom: 10px;
 }
 
-.toggle-menu .rsvp .button button:hover {
-    background: #F8F4FF;
-    opacity: 0.9;
+.rsvp-section p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #555;
 }
 
-.toggle-menu .rsvp .button button i {
-    font-size: 24px;
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
-.toggle-menu .rsvp .button #btn-hadir i {
-    color: green;
+.button-group button {
+  background-color: #b76e79;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
-.toggle-menu .rsvp .button #btn-tidak-hadir i {
-    color: red;
+.button-group button i {
+  margin-right: 8px;
+}
+
+.button-group button:hover {
+  background-color: #a05561;
+}
+
+#response-msg {
+  color: #8c4b36;
+  font-size: 16px;
+  font-style: italic;
 }
 
 /*===========================
