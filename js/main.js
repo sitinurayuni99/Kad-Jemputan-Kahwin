@@ -154,6 +154,8 @@ document.getElementById('contact-btn')?.addEventListener('click', (e) => {
  * ========================================================== */
 document.addEventListener('click', () => {
     document.querySelectorAll('.toggle-menu.open').forEach(el => {
-    el.classList.remove('open');
-    el.style.display = 'none';
+        el.classList.remove('open');
+        el.style.display = 'none';
+    });
 });
+
