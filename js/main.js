@@ -148,35 +148,12 @@ document.getElementById('contact-btn')?.addEventListener('click', (e) => {
     toggleMenu('contact-menu');
 });
 
-/* ============================================================
- * Toggle Butang RSVP & Ucapan
- * ========================================================== */
-document.getElementById('kehadiran-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-
-    const rsvpForm = document.getElementById('rsvp-form');
-    const ucapanForm = document.getElementById('ucapan-form');
-
-    rsvpForm.style.display = rsvpForm.style.display === 'block' ? 'none' : 'block';
-    ucapanForm.style.display = 'none';
-});
-
-document.getElementById('ucapan-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-
-    const rsvpForm = document.getElementById('rsvp-form');
-    const ucapanForm = document.getElementById('ucapan-form');
-
-    ucapanForm.style.display = ucapanForm.style.display === 'block' ? 'none' : 'block';
-    rsvpForm.style.display = 'none';
-});
 
 /* ============================================================
  * Klik luar akan tutup semua menu
  * ========================================================== */
 document.addEventListener('click', () => {
-    document.querySelectorAll('.toggle-menu.open, .form-section').forEach(el => {
-        el.classList.remove('open');
-        el.style.display = 'none';
-    });
+    document.querySelectorAll('.toggle-menu.open').forEach(el => {
+    el.classList.remove('open');
+    el.style.display = 'none';
 });
