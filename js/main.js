@@ -1,21 +1,25 @@
 /* ============================================================
  * Buka overlay dan main muzik
  * ========================================================== */
-document.getElementById("toggle-content").addEventListener("click", function () {
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("toggle-content")?.addEventListener("click", function () {
     var wrapper = document.querySelector(".wrapper");
     var card = document.querySelector(".card");
 
-    wrapper.classList.add("hidden");
+    if (wrapper && card) {
+      wrapper.classList.add("hidden");
 
-    wrapper.addEventListener("transitionend", function () {
+      wrapper.addEventListener("transitionend", function () {
         wrapper.style.display = "none";
         card.style.display = "block";
-    }, { once: true });
+      }, { once: true });
+    }
 
     const audioPlayer = document.getElementById("audio-player");
-    audioPlayer.play().catch(e => {
-        console.log("Audio autoplay disekat: ", e);
+    audioPlayer?.play().catch(e => {
+      console.log("Audio autoplay disekat: ", e);
     });
+  });
 });
 
 /* ============================================================
