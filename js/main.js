@@ -26,45 +26,45 @@ document.addEventListener("DOMContentLoaded", function () {
  * Lokasi: Google Maps & Waze
  * ========================================================== */
 function openGoogleMaps() {
-    const latitude = 3.1927426;
-    const longitude = 101.5504211;
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`, "_blank");
+  const latitude = 3.1927426;
+  const longitude = 101.5504211;
+  window.open(`https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`, "_blank");
 }
 
 function openWaze() {
-    const latitude = 3.1927426;
-    const longitude = 101.5504211;
-    window.open(`waze://?ll=${latitude},${longitude}&navigate=yes`, "_blank");
+  const latitude = 3.1927426;
+  const longitude = 101.5504211;
+  window.open(`waze://?ll=${latitude},${longitude}&navigate=yes`, "_blank");
 }
 
 /* ============================================================
  * Hubungi: WhatsApp & Panggilan
  * ========================================================== */
 function openWhatsApp(phoneNumber) {
-    window.open(`https://wa.me/${phoneNumber}`, "_blank");
+  window.open(`https://wa.me/${phoneNumber}`, "_blank");
 }
 
 function makePhoneCall(phoneNumber) {
-    window.location.href = `tel:${phoneNumber}`;
+  window.location.href = `tel:${phoneNumber}`;
 }
 
 /* ============================================================
  * Scroll Reveal
  * ========================================================== */
 function reveal() {
-    const reveals = document.querySelectorAll(".reveal");
+  const reveals = document.querySelectorAll(".reveal");
 
-    for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = 10;
+  for (let i = 0; i < reveals.length; i++) {
+    const windowHeight = window.innerHeight;
+    const elementTop = reveals[i].getBoundingClientRect().top;
+    const elementVisible = 10;
 
-        if (elementTop < windowHeight - elementVisible) {
-            reveals[i].classList.add("active");
-        } else {
-            reveals[i].classList.remove("active");
-        }
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    } else {
+      reveals[i].classList.remove("active");
     }
+  }
 }
 window.addEventListener("scroll", reveal);
 
@@ -76,33 +76,33 @@ const maxPetals = 70;
 const petalInterval = 100;
 
 function createPetal() {
-    if (petalContainer && petalContainer.childElementCount < maxPetals) {
-        const petal = document.createElement('div');
-        petal.className = 'petal';
+  if (petalContainer && petalContainer.childElementCount < maxPetals) {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
 
-        const startY = Math.random() * 100;
-        const duration = 4 + Math.random() * 2;
-        const petalSize = 5 + Math.random() * 10;
-        const petalOpacity = 0.3 + Math.random() * 0.5;
+    const startY = Math.random() * 100;
+    const duration = 4 + Math.random() * 2;
+    const petalSize = 5 + Math.random() * 10;
+    const petalOpacity = 0.3 + Math.random() * 0.5;
 
-        petal.style.top = `${startY}%`;
-        petal.style.width = `${petalSize}px`;
-        petal.style.height = `${petalSize}px`;
-        petal.style.opacity = petalOpacity;
-        petal.style.animationDuration = `${duration}s`;
+    petal.style.top = `${startY}%`;
+    petal.style.width = `${petalSize}px`;
+    petal.style.height = `${petalSize}px`;
+    petal.style.opacity = petalOpacity;
+    petal.style.animationDuration = `${duration}s`;
 
-        const translateX = 300 + Math.random() * 120;
-        const translateY = 300 + Math.random() * 120;
+    const translateX = 300 + Math.random() * 120;
+    const translateY = 300 + Math.random() * 120;
 
-        petal.style.setProperty('--translate-x', `${translateX}px`);
-        petal.style.setProperty('--translate-y', `${translateY}px`);
+    petal.style.setProperty('--translate-x', `${translateX}px`);
+    petal.style.setProperty('--translate-y', `${translateY}px`);
 
-        petalContainer.appendChild(petal);
+    petalContainer.appendChild(petal);
 
-        setTimeout(() => {
-            petal.remove();
-        }, duration * 1000);
-    }
+    setTimeout(() => {
+      petal.remove();
+    }, duration * 1000);
+  }
 }
 setInterval(createPetal, petalInterval);
 
@@ -110,56 +110,53 @@ setInterval(createPetal, petalInterval);
  * Toggle Menu Function
  * ========================================================== */
 function toggleMenu(menuId) {
-    const menu = document.getElementById(menuId);
+  const menu = document.getElementById(menuId);
 
-    if (menu) {
-        const isOpen = menu.classList.contains('open');
+  if (menu) {
+    const isOpen = menu.classList.contains('open');
 
-        // Tutup semua dahulu
-        document.querySelectorAll('.toggle-menu.open, .form-section').forEach(el => {
-            el.classList.remove('open');
-            el.style.display = 'none';
-        });
+    // Tutup semua menu dahulu
+    document.querySelectorAll('.toggle-menu.open, .form-section.open').forEach(el => {
+      el.classList.remove('open');
+    });
 
-        // Buka kalau belum buka
-        if (!isOpen) {
-            menu.classList.add('open');
-            menu.style.display = 'block';
-        }
+    // Buka kalau belum buka
+    if (!isOpen) {
+      menu.classList.add('open');
     }
+  }
 }
 
 /* ============================================================
  * Toggle Butang Footer: Location, Music, RSVP, Contact
  * ========================================================== */
 document.getElementById('location-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('location-menu');
+  e.stopPropagation();
+  toggleMenu('location-menu');
 });
 
 document.getElementById('music-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('music-menu');
+  e.stopPropagation();
+  toggleMenu('music-menu');
 });
 
 document.getElementById('rsvp-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('rsvp-menu');
+  e.stopPropagation();
+  toggleMenu('rsvp-menu');
 });
 
 document.getElementById('contact-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('contact-menu');
+  e.stopPropagation();
+  toggleMenu('contact-menu');
 });
-
 
 /* ============================================================
- * Klik luar akan tutup semua menu
+ * Klik luar akan tutup semua menu — tapi bukan jika klik dalam
  * ========================================================== */
-document.addEventListener('click', () => {
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.toggle-menu') && !e.target.closest('.footer-btn')) {
     document.querySelectorAll('.toggle-menu.open').forEach(el => {
-        el.classList.remove('open');
-        el.style.display = 'none';
+      el.classList.remove('open');
     });
+  }
 });
-
