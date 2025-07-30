@@ -154,7 +154,8 @@ document.getElementById('contact-btn')?.addEventListener('click', (e) => {
  * Klik luar akan tutup semua menu — tapi bukan jika klik dalam
  * ========================================================== */
 document.addEventListener('click', (e) => {
-  if (!e.target.closest('.toggle-menu') && !e.target.closest('.footer-btn')) {
+  // ✅ DIBETULKAN baris ini: guna .menu li sebagai pengecualian klik
+  if (!e.target.closest('.toggle-menu') && !e.target.closest('.menu li')) {
     document.querySelectorAll('.toggle-menu.active').forEach(el => {
       el.classList.remove('active');
     });
