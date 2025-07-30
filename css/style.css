@@ -757,6 +757,10 @@ section {
   display: block;
 }
 
+.toggle-menu.open {
+  display: block;
+}
+
 .toggle-menu h1 {
     font-size: 24px;
     font-weight: 700;
