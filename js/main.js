@@ -113,16 +113,16 @@ function toggleMenu(menuId) {
   const menu = document.getElementById(menuId);
 
   if (menu) {
-    const isOpen = menu.classList.contains('open');
+    const isActive = menu.classList.contains('active');
 
     // Tutup semua menu dahulu
-    document.querySelectorAll('.toggle-menu.open, .form-section.open').forEach(el => {
-      el.classList.remove('open');
+    document.querySelectorAll('.toggle-menu.active, .form-section.active').forEach(el => {
+      el.classList.remove('active');
     });
 
     // Buka kalau belum buka
-    if (!isOpen) {
-      menu.classList.add('open');
+    if (!isActive) {
+      menu.classList.add('active');
     }
   }
 }
@@ -155,8 +155,8 @@ document.getElementById('contact-btn')?.addEventListener('click', (e) => {
  * ========================================================== */
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.toggle-menu') && !e.target.closest('.footer-btn')) {
-    document.querySelectorAll('.toggle-menu.open').forEach(el => {
-      el.classList.remove('open');
+    document.querySelectorAll('.toggle-menu.active').forEach(el => {
+      el.classList.remove('active');
     });
   }
 });
