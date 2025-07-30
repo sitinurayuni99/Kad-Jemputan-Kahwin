@@ -753,7 +753,7 @@ section {
   overflow-y: auto;
 }
 
-.toggle-menu.open {
+.toggle-menu.active {
   display: block;
 }
 
