@@ -1,7 +1,7 @@
-/* ============================================================
- * Buka overlay dan main muzik
- * ========================================================== */
 document.addEventListener("DOMContentLoaded", function () {
+  /* ============================================================
+   * Buka overlay dan main muzik
+   * ========================================================== */
   document.getElementById("toggle-content")?.addEventListener("click", function () {
     var wrapper = document.querySelector(".wrapper");
     var card = document.querySelector(".card");
@@ -20,10 +20,123 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Audio autoplay disekat: ", e);
     });
   });
+
+  /* ============================================================
+   * Toggle Menu Function
+   * ========================================================== */
+  function toggleMenu(menuId) {
+    const menu = document.getElementById(menuId);
+
+    if (menu) {
+      const isActive = menu.classList.contains('active');
+
+      // Tutup semua menu dahulu
+      document.querySelectorAll('.toggle-menu.active, .form-section.active').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      // Buka kalau belum buka
+      if (!isActive) {
+        menu.classList.add('active');
+      }
+    }
+  }
+
+  /* ============================================================
+   * Toggle Butang Footer: Location, Music, RSVP, Contact
+   * ========================================================== */
+  document.getElementById('location-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('location-menu');
+  });
+
+  document.getElementById('music-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('music-menu');
+  });
+
+  document.getElementById('rsvp-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('rsvp-menu');
+  });
+
+  document.getElementById('contact-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu('contact-menu');
+  });
+
+  /* ============================================================
+   * Klik luar akan tutup semua menu — tapi bukan jika klik dalam
+   * ========================================================== */
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.toggle-menu') && !e.target.closest('.menu li')) {
+      document.querySelectorAll('.toggle-menu.active').forEach(el => {
+        el.classList.remove('active');
+      });
+    }
+  });
+
+  /* ============================================================
+   * Scroll Reveal
+   * ========================================================== */
+  function reveal() {
+    const reveals = document.querySelectorAll(".reveal");
+
+    for (let i = 0; i < reveals.length; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = reveals[i].getBoundingClientRect().top;
+      const elementVisible = 10;
+
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      } else {
+        reveals[i].classList.remove("active");
+      }
+    }
+  }
+  window.addEventListener("scroll", reveal);
+
+  /* ============================================================
+   * Background Bunga (Petal)
+   * ========================================================== */
+  const petalContainer = document.querySelector('.petal-container');
+  const maxPetals = 70;
+  const petalInterval = 100;
+
+  function createPetal() {
+    if (petalContainer && petalContainer.childElementCount < maxPetals) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+
+      const startY = Math.random() * 100;
+      const duration = 4 + Math.random() * 2;
+      const petalSize = 5 + Math.random() * 10;
+      const petalOpacity = 0.3 + Math.random() * 0.5;
+
+      petal.style.top = `${startY}%`;
+      petal.style.width = `${petalSize}px`;
+      petal.style.height = `${petalSize}px`;
+      petal.style.opacity = petalOpacity;
+      petal.style.animationDuration = `${duration}s`;
+
+      const translateX = 300 + Math.random() * 120;
+      const translateY = 300 + Math.random() * 120;
+
+      petal.style.setProperty('--translate-x', `${translateX}px`);
+      petal.style.setProperty('--translate-y', `${translateY}px`);
+
+      petalContainer.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, duration * 1000);
+    }
+  }
+  setInterval(createPetal, petalInterval);
 });
 
 /* ============================================================
- * Lokasi: Google Maps & Waze
+ * Lokasi: Google Maps & Waze (boleh kekal luar DOMContentLoaded)
  * ========================================================== */
 function openGoogleMaps() {
   const latitude = 3.1927426;
@@ -47,117 +160,3 @@ function openWhatsApp(phoneNumber) {
 function makePhoneCall(phoneNumber) {
   window.location.href = `tel:${phoneNumber}`;
 }
-
-/* ============================================================
- * Scroll Reveal
- * ========================================================== */
-function reveal() {
-  const reveals = document.querySelectorAll(".reveal");
-
-  for (let i = 0; i < reveals.length; i++) {
-    const windowHeight = window.innerHeight;
-    const elementTop = reveals[i].getBoundingClientRect().top;
-    const elementVisible = 10;
-
-    if (elementTop < windowHeight - elementVisible) {
-      reveals[i].classList.add("active");
-    } else {
-      reveals[i].classList.remove("active");
-    }
-  }
-}
-window.addEventListener("scroll", reveal);
-
-/* ============================================================
- * Background Bunga (Petal)
- * ========================================================== */
-const petalContainer = document.querySelector('.petal-container');
-const maxPetals = 70;
-const petalInterval = 100;
-
-function createPetal() {
-  if (petalContainer && petalContainer.childElementCount < maxPetals) {
-    const petal = document.createElement('div');
-    petal.className = 'petal';
-
-    const startY = Math.random() * 100;
-    const duration = 4 + Math.random() * 2;
-    const petalSize = 5 + Math.random() * 10;
-    const petalOpacity = 0.3 + Math.random() * 0.5;
-
-    petal.style.top = `${startY}%`;
-    petal.style.width = `${petalSize}px`;
-    petal.style.height = `${petalSize}px`;
-    petal.style.opacity = petalOpacity;
-    petal.style.animationDuration = `${duration}s`;
-
-    const translateX = 300 + Math.random() * 120;
-    const translateY = 300 + Math.random() * 120;
-
-    petal.style.setProperty('--translate-x', `${translateX}px`);
-    petal.style.setProperty('--translate-y', `${translateY}px`);
-
-    petalContainer.appendChild(petal);
-
-    setTimeout(() => {
-      petal.remove();
-    }, duration * 1000);
-  }
-}
-setInterval(createPetal, petalInterval);
-
-/* ============================================================
- * Toggle Menu Function
- * ========================================================== */
-function toggleMenu(menuId) {
-  const menu = document.getElementById(menuId);
-
-  if (menu) {
-    const isActive = menu.classList.contains('active');
-
-    // Tutup semua menu dahulu
-    document.querySelectorAll('.toggle-menu.active, .form-section.active').forEach(el => {
-      el.classList.remove('active');
-    });
-
-    // Buka kalau belum buka
-    if (!isActive) {
-      menu.classList.add('active');
-    }
-  }
-}
-
-/* ============================================================
- * Toggle Butang Footer: Location, Music, RSVP, Contact
- * ========================================================== */
-document.getElementById('location-btn')?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  toggleMenu('location-menu');
-});
-
-document.getElementById('music-btn')?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  toggleMenu('music-menu');
-});
-
-document.getElementById('rsvp-btn')?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  toggleMenu('rsvp-menu');
-});
-
-document.getElementById('contact-btn')?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  toggleMenu('contact-menu');
-});
-
-/* ============================================================
- * Klik luar akan tutup semua menu — tapi bukan jika klik dalam
- * ========================================================== */
-document.addEventListener('click', (e) => {
-  // ✅ DIBETULKAN baris ini: guna .menu li sebagai pengecualian klik
-  if (!e.target.closest('.toggle-menu') && !e.target.closest('.menu li')) {
-    document.querySelectorAll('.toggle-menu.active').forEach(el => {
-      el.classList.remove('active');
-    });
-  }
-});
