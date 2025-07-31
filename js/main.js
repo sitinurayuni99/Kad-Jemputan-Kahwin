@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
   /* ============================================================
    * Buka overlay dan main muzik
    * ========================================================== */
@@ -21,60 +20,82 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ============================================================
-   * Toggle Menu Function
-   * ========================================================== */
-  function toggleMenu(menuId) {
+  /** =====================================================
+ *  Toggle Menu
+  ======================================================= */
+// ================================== Calendar ==================================
+// Get all buttons and their corresponding menus
+const toggleButtons = {
+    'location-btn': 'location-menu',
+    'music-btn': 'music-menu',
+    'rsvp-btn': 'rsvp-menu',
+    'ucapan-btn': 'ucapan-menu',
+    'contact-btn': 'contact-menu',
+    'kehadiran-btn': 'rsvp-menu',
+    'btn-hadir': 'success-menu'
+    // Add other button-to-menu mappings here
+};
+
+// Function to toggle a menu open/close
+function toggleMenu(menuId, event) {
+    event.stopPropagation(); // Prevent click from propagating
     const menu = document.getElementById(menuId);
 
-    if (menu) {
-      const isActive = menu.classList.contains('active');
-
-      // Tutup semua menu dahulu
-      document.querySelectorAll('.toggle-menu.active, .form-section.active').forEach(el => {
-        el.classList.remove('active');
-      });
-
-      // Buka kalau belum buka
-      if (!isActive) {
-        menu.classList.add('active');
-      }
+    if (menu.classList.contains('open')) {
+        menu.classList.remove('open'); // Close the menu
+    } else {
+        // Close all other menus first
+        closeAllMenus();
+        menu.classList.add('open'); // Open the menu
     }
-  }
+}
 
-  /* ============================================================
-   * Toggle Butang Footer: Location, Music, RSVP, Contact
-   * ========================================================== */
-  document.getElementById('location-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('location-menu');
-  });
-
-  document.getElementById('music-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('music-menu');
-  });
-
-  document.getElementById('rsvp-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('rsvp-menu');
-  });
-
-  document.getElementById('contact-btn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu('contact-menu');
-  });
-
-  /* ============================================================
-   * Klik luar akan tutup semua menu — tapi bukan jika klik dalam
-   * ========================================================== */
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.toggle-menu') && !e.target.closest('.menu li')) {
-      document.querySelectorAll('.toggle-menu.active').forEach(el => {
-        el.classList.remove('active');
-      });
+// Function to close all menus
+function closeAllMenus() {
+    for (const menuId of Object.values(toggleButtons)) {
+        const menu = document.getElementById(menuId);
+        if (menu.classList.contains('open')) {
+            menu.classList.remove('open'); // Close the menu
+        }
     }
-  });
+}
+
+// Add click event listeners to all toggle buttons
+for (const [buttonId, menuId] of Object.entries(toggleButtons)) {
+    const button = document.getElementById(buttonId);
+    button.addEventListener('click', (event) => toggleMenu(menuId, event));
+}
+
+// Add a global click handler to close all menus when clicking outside
+document.addEventListener('click', () => closeAllMenus());
+
+// Prevent clicks within menus from closing them
+for (const menuId of Object.values(toggleButtons)) {
+    const menu = document.getElementById(menuId);
+    menu.addEventListener('click', (event) => event.stopPropagation());
+}
+
+// Function to close a specific menu
+function closeMenu(menuId) {
+    const menu = document.getElementById(menuId);
+    if (menu.classList.contains('open')) {
+        menu.classList.remove('open'); // Close the menu
+    }
+}
+
+// Add event listener for the close button inside the ucapan menu
+const closeButton = document.querySelector('#ucapan-menu .tutup');
+if (closeButton) {
+    closeButton.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent this from propagating and triggering other closures
+        closeMenu('ucapan-menu'); // Close the specific menu
+    });
+}
+
+// Function to open RSVP
+const kehadiranBtn = document.getElementById("kehadiran-btn");
+
+
 
   /* ============================================================
    * Scroll Reveal
