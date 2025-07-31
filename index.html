@@ -184,9 +184,7 @@
                         <p class="arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
                         <p class="latin">
                             Ya Allah Ya Rahman Ya Rahim,<br />
-                            Berkatilah majlis perkahwinan ini.<br />
-                            Limpahkan baraqah dan rahmatMu kepada kedua mempelai ini.<br />
-                            Kurniakanlah mereka zuriat yang soleh dan solehah.<br />
+                            Berkatilah majlis perkahwinan ini. Limpahkan baraqah dan rahmatMu kepada kedua mempelai ini. Kurniakanlah mereka zuriat yang soleh dan solehah.<br />
                             Kekalkanlah jodoh mereka hingga ke jannah.
                         </p>
                         <p class="arabic" style="margin-top: 20px;">
@@ -253,24 +251,20 @@
     </div>
 
     <div id="rsvp-menu" class="toggle-menu">
-      <div class="rsvp-section">
-        <h1>Kehadiran</h1>
-        <p>Sila sahkan kehadiran anda:</p>
-    
-        <div class="button-group">
-          <button type="button" id="btn-hadir">
-            <i class="bx bx-check"></i>
-            <span>Hadir</span>
-          </button>
-          <button type="button" id="btn-tidak-hadir">
-            <i class="bx bx-x"></i>
-            <span>Tidak Hadir</span>
-          </button>
+        <div class="rsvp">
+            <h1>Kehadiran</h1>
+            <div class="button">
+                <button type="button" id="btn-hadir">
+                    <i class='bx bx-check'></i>
+                    <span>Hadir</span>
+                </button>
+                <button type="button" id="btn-tidak-hadir">
+                    <i class='bx bx-x'></i>
+                    <span>Tidak Hadir</span>
+                </button>
+            </div>
         </div>
-    
-        <p id="response-msg"></p>
-      </div>
-    </div> 
+    </div>
            
     <div id="contact-menu" class="toggle-menu">
         <div class="contact">
@@ -348,34 +342,40 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const btnHadir = document.getElementById("btn-hadir");
-            const btnTidak = document.getElementById("btn-tidak-hadir");
-            const msg = document.getElementById("response-msg");
+     <div id="ucapan-menu" class="toggle-menu">
+        <div class="ucapan-tetamu">
+            <h1>Sampaikan Ucapan</h1>
+            <form id="form-ucapan" class="form-ucapan" action="insert_message.php" method="POST">
+                <label for="name">Nama Anda</label>
+                <input type="text" name="name" placeholder="Uzumaki Naruto" required>
 
-            btnHadir?.addEventListener("click", function () {
-                submitRSVP("hadir");
-            });
+                <label for="ucapan">Ucapan</label>
+                <textarea name="message" id="ucapan" cols="30" rows="10" placeholder="Selemat pengantin baru..."
+                    required></textarea>
 
-            btnTidak?.addEventListener("click", function () {
-                submitRSVP("tidak");
-            });
+                <div class="button">
+                    <button type="submit" class="hantar" id="hantar">
+                        <i class='bx bxs-paper-plane'></i>
+                        <span>Hantar</span>
+                    </button>
+                    <button class="tutup">
+                        <i class='bx bx-x'></i>
+                        <span>Tutup</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- This container will hold the success message and will be dynamically populated -->
+    <div id="success-menu" class="toggle-menu"></div>
 
-            function submitRSVP(status) {
-                const responseText =
-                    status === "hadir"
-                        ? "Terima kasih kerana mengesahkan kehadiran!"
-                        : "Terima kasih. Mohon maaf kerana tidak dapat hadir.";
-                msg.innerText = responseText;
 
-                btnHadir.disabled = true;
-                btnTidak.disabled = true;
-            }
-          });
-        </script>
-    
-        <script src="./js/main.js" defer></script>
-      </body>
-    
-      </html>
+    <!-- Js Vendor -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/1.18.11/tsparticles.min.js"> </script>
+
+    <!-- Custom Js -->
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
