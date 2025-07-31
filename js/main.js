@@ -30,55 +30,30 @@ document.getElementById("toggle-content").addEventListener("click", function () 
     audioPlayer.play();  // Start playing the audio
 });
 
-  // ============================================================
-  // Toggle Menu
-  // ============================================================
-  const toggleButtons = {
-    "location-btn": "location-menu",
-    "music-btn": "music-menu",
-    "rsvp-btn": "rsvp-menu",
-    "contact-btn": "contact-menu",
-    "kehadiran-btn": "rsvp-menu",
-    "btn-hadir": "success-menu",
-  };
+  
+// ============================================================
+// Fungsi Luar DOMContentLoaded (boleh kekal di luar)
+// ============================================================
+function openGoogleMaps() {
+  const lat = 3.1927426;
+  const lng = 101.5504211;
+  window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, "_blank");
+}
 
-  function toggleMenu(menuId, event) {
-    event.stopPropagation();
-    const menu = document.getElementById(menuId);
-    if (!menu) return;
+function openWaze() {
+  const lat = 3.1927426;
+  const lng = 101.5504211;
+  window.open(`https://waze.com/ul?ll=${lat},${lng}&navigate=yes`, "_blank");
+}
 
-    if (menu.classList.contains("open")) {
-      menu.classList.remove("open");
-    } else {
-      closeAllMenus();
-      menu.classList.add("open");
-    }
-  }
+function openWhatsApp(phoneNumber) {
+  window.open(`https://wa.me/${phoneNumber}`, "_blank");
+}
 
-  function closeAllMenus() {
-    for (const id of Object.values(toggleButtons)) {
-      const menu = document.getElementById(id);
-      menu?.classList.remove("open");
-    }
-  }
+function makePhoneCall(phoneNumber) {
+  window.location.href = `tel:${phoneNumber}`;
+}
 
-  for (const [btnId, menuId] of Object.entries(toggleButtons)) {
-    const button = document.getElementById(btnId);
-    button?.addEventListener("click", (e) => toggleMenu(menuId, e));
-  }
-
-  document.addEventListener("click", () => closeAllMenus());
-
-  for (const menuId of Object.values(toggleButtons)) {
-    const menu = document.getElementById(menuId);
-    menu?.addEventListener("click", (e) => e.stopPropagation());
-  }
-
-  const closeBtn = document.querySelector("#ucapan-menu .tutup");
-  closeBtn?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    document.getElementById("ucapan-menu")?.classList.remove("open");
-  });
 
   // ============================================================
   // Scroll Reveal
@@ -140,25 +115,133 @@ document.getElementById("toggle-content").addEventListener("click", function () 
   setInterval(createPetal, petalInterval);
 });
 
+
 // ============================================================
-// Fungsi Luar DOMContentLoaded (boleh kekal di luar)
-// ============================================================
-function openGoogleMaps() {
-  const lat = 3.1927426;
-  const lng = 101.5504211;
-  window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, "_blank");
+  // Toggle Menu
+  // ============================================================
+  const toggleButtons = {
+    "location-btn": "location-menu",
+    "music-btn": "music-menu",
+    "rsvp-btn": "rsvp-menu",
+    "contact-btn": "contact-menu",
+    "kehadiran-btn": "rsvp-menu",
+    "btn-hadir": "success-menu",
+  };
+
+  // Function to toggle a menu open/close
+function toggleMenu(menuId, event) {
+    event.stopPropagation(); // Prevent click from propagating
+    const menu = document.getElementById(menuId);
+
+    if (menu.classList.contains('open')) {
+        menu.classList.remove('open'); // Close the menu
+    } else {
+        // Close all other menus first
+        closeAllMenus();
+        menu.classList.add('open'); // Open the menu
+    }
 }
 
-function openWaze() {
-  const lat = 3.1927426;
-  const lng = 101.5504211;
-  window.open(`https://waze.com/ul?ll=${lat},${lng}&navigate=yes`, "_blank");
+// Function to close all menus
+function closeAllMenus() {
+    for (const menuId of Object.values(toggleButtons)) {
+        const menu = document.getElementById(menuId);
+        if (menu.classList.contains('open')) {
+            menu.classList.remove('open'); // Close the menu
+        }
+    }
 }
 
-function openWhatsApp(phoneNumber) {
-  window.open(`https://wa.me/${phoneNumber}`, "_blank");
+// Add click event listeners to all toggle buttons
+for (const [buttonId, menuId] of Object.entries(toggleButtons)) {
+    const button = document.getElementById(buttonId);
+    button.addEventListener('click', (event) => toggleMenu(menuId, event));
 }
 
-function makePhoneCall(phoneNumber) {
-  window.location.href = `tel:${phoneNumber}`;
+// Add a global click handler to close all menus when clicking outside
+document.addEventListener('click', () => closeAllMenus());
+
+// Prevent clicks within menus from closing them
+for (const menuId of Object.values(toggleButtons)) {
+    const menu = document.getElementById(menuId);
+    menu.addEventListener('click', (event) => event.stopPropagation());
 }
+
+// Function to close a specific menu
+function closeMenu(menuId) {
+    const menu = document.getElementById(menuId);
+    if (menu.classList.contains('open')) {
+        menu.classList.remove('open'); // Close the menu
+    }
+}
+
+// Add event listener for the close button inside the ucapan menu
+const closeButton = document.querySelector('#ucapan-menu .tutup');
+if (closeButton) {
+    closeButton.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent this from propagating and triggering other closures
+        closeMenu('ucapan-menu'); // Close the specific menu
+    });
+}
+
+// Function to open RSVP
+const kehadiranBtn = document.getElementById("kehadiran-btn");
+
+
+
+/** =====================================================
+ *  Handle Kehadiran Count
+  ======================================================= */
+function incrementCount(endpoint, successMessage, iconClass, closeMenuId) {
+    fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'action=increment',
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error("Request failed");
+        }
+    })
+    .then(data => {
+        if (data.attend) {
+            // Display the success message
+            const successMenu = document.getElementById("success-menu");
+            successMenu.innerHTML = `<div class='success-message'><i class='${iconClass}'></i><p>${successMessage}</p></div>`;
+            successMenu.classList.add("open"); // Open the success menu
+
+            // Optionally close other menu
+            if (closeMenuId) {
+                closeMenu(closeMenuId); // Close the specified menu
+            }
+        } else {
+            console.error("Increment count error:", data.error);
+            alert("Terjadi kesilapan: " + data.error);
+        }
+    })
+    .catch(error => {
+        console.error("AJAX error:", error);
+        alert("Error processing the request.");
+    });
+}
+
+// Attach the click event to the "Hadir" and "Tidak Hadir" buttons
+document.getElementById("btn-hadir").onclick = function() {
+    incrementCount('count_hadir.php', "Kami menantikan kedatangan anda!", 'bx bxs-wink-smile', 'rsvp-menu'); // Success message and optionally close RSVP menu
+};
+
+document.getElementById("btn-tidak-hadir").onclick = function() {
+    incrementCount('count_tidak_hadir.php', "Maaf, mungkin lain kali.", 'bx bxs-sad', 'rsvp-menu'); // Success message and optionally close RSVP menu
+};
+
+
+
+
+
+/** =====================================================
+ *  Image Carousel
+  ======================================================= */
