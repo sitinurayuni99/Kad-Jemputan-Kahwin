@@ -3,27 +3,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // Buka overlay dan main muzik
   // ============================================================
   const toggleBtn = document.getElementById("toggle-content");
-  toggleBtn?.addEventListener("click", function () {
-    const wrapper = document.querySelector(".wrapper");
-    const card = document.querySelector(".card");
+toggleBtn?.addEventListener("click", function () {
+  const wrapper = document.querySelector(".wrapper");
+  const card = document.querySelector(".card");
 
-    if (wrapper && card) {
-      wrapper.classList.add("hidden");
-      wrapper.addEventListener(
-        "transitionend",
-        function () {
-          wrapper.style.display = "none";
-          card.style.display = "block";
-        },
-        { once: true }
-      );
-    }
+  if (wrapper && card) {
+    wrapper.classList.add("hidden"); // hide overlay sepenuhnya
+    card.style.display = "block";    // paparkan kad utama
+  }
 
-    const audioPlayer = document.getElementById("audio-player");
-    audioPlayer?.play().catch((e) => {
-      console.log("Audio autoplay disekat: ", e);
-    });
+  const audioPlayer = document.getElementById("audio-player");
+  audioPlayer?.play().catch((e) => {
+    console.log("Audio autoplay disekat: ", e);
   });
+});
 
   // ============================================================
   // Toggle Menu
