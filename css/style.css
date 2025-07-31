@@ -1034,6 +1034,14 @@ section {
     color: white;
 }
 
+.toggle-menu {
+  display: none;
+}
+
+.toggle-menu.open {
+  display: block;
+}
+
 
 /*============================================================================================
     # Image Carousel
