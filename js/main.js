@@ -1,21 +1,33 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // ============================================================
-  // Buka overlay dan main muzik
-  // ============================================================
-  const toggleBtn = document.getElementById("toggle-content");
-toggleBtn?.addEventListener("click", function () {
-  const wrapper = document.querySelector(".wrapper");
-  const card = document.querySelector(".card");
+/*============================================================================================
+    # Wrapper Overlay
+============================================================================================*/
+// document.getElementById("toggle-content").addEventListener("click", function () {
+//     // Hide the overlay
+//     const overlay = document.getElementById("overlay");
+//     overlay.style.display = "none";
 
-  if (wrapper && card) {
-    wrapper.classList.add("hidden"); // hide overlay sepenuhnya
-    card.style.display = "block";    // paparkan kad utama
-  }
+    // Play the audio
+//    const audioPlayer = document.getElementById("audio-player");
+//    audioPlayer.play();  // Start playing the audio
+// });
 
-  const audioPlayer = document.getElementById("audio-player");
-  audioPlayer?.play().catch((e) => {
-    console.log("Audio autoplay disekat: ", e);
-  });
+document.getElementById("toggle-content").addEventListener("click", function () {
+    var wrapper = document.querySelector(".wrapper"); // Change to wrapper
+    var card = document.querySelector(".card");
+
+    // Add the 'hidden' class to start the fade out transition
+    wrapper.classList.add("hidden");
+
+    // Wait for the transition to complete
+    wrapper.addEventListener("transitionend", function () {
+        // After fade out is complete, hide the wrapper and show the card
+        wrapper.style.display = "none"; // Hide the wrapper
+        card.style.display = "block";   // Show the card
+    }, { once: true });
+
+    // Play the audio
+    const audioPlayer = document.getElementById("audio-player");
+    audioPlayer.play();  // Start playing the audio
 });
 
   // ============================================================
