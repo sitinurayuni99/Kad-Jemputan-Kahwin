@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "location-btn": "location-menu",
     "music-btn": "music-menu",
     "rsvp-btn": "rsvp-menu",
-    "ucapan-btn": "ucapan-menu",
     "contact-btn": "contact-menu",
     "kehadiran-btn": "rsvp-menu",
     "btn-hadir": "success-menu",
