@@ -646,54 +646,6 @@ section {
 }
 
 
-
-
-
-/*============================================================================================
-    # Ucapan
-============================================================================================*/
-.card section.info .ucapan .container {
-    position: relative;
-    max-width: 420px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-    z-index: 500;
-    background-image: url('plain.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 10px;
-}
-
-/* Gambar latar tidak diperlukan lagi */
-.card section.info .ucapan img {
-    display: none;
-}
-
-.card section.info .ucapan .content {
-    position: relative;
-    text-align: center;
-    width: 85%;
-    padding: 20px;
-    border-radius: 10px;
-    color: black;
-    border: 1px solid black; /* ✅ Border hitam */
-    background-color: transparent;
-}
-
-.card section.info .ucapan .content p {
-    font-size: 16px;
-    font-family: 'Cormorant Garamond', serif;
-    margin: 0;
-    text-align: center;
-    color: black;
-}
-}
-
-
 /*============================================================================================
     # Footer
 ============================================================================================*/
@@ -770,7 +722,6 @@ section {
 .toggle-menu .music,
 .toggle-menu .rsvp,
 .toggle-menu .contact,
-.toggle-menu .ucapan-tetamu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -939,100 +890,6 @@ section {
     font-size: 30px;
 }
 
-.toggle-menu .ucapan-tetamu form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-    width: 100%;
-}
-
-.toggle-menu .ucapan-tetamu form label {
-    text-align: center;
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.toggle-menu .ucapan-tetamu form input {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 12px;
-    outline: none;
-}
-
-.toggle-menu .ucapan-tetamu form textarea {
-    width: 100%;
-    resize: none;
-    padding: 12px 16px;
-    outline: none;
-    border-radius: 12px;
-}
-
-.toggle-menu .ucapan-tetamu .button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.toggle-menu .ucapan-tetamu .button button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 6px;
-    cursor: pointer;
-    background: #F8F4FF;
-    gap: 5px;
-}
-
-.toggle-menu .ucapan-tetamu .button button:hover {
-    background: #F8F4FF;
-    opacity: 0.9;
-}
-
-.toggle-menu .ucapan-tetamu .button button i {
-    font-size: 24px;
-}
-
-.toggle-menu .ucapan-tetamu .button button i.bxs-paper-plane {
-    color: darkcyan;
-}
-
-.toggle-menu .ucapan-tetamu .button button i.bx-x {
-    color: red;
-}
-
-.toggle-menu .success-message {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 16px 16px 20px 16px;
-    gap: 10px;
-}
-
-.toggle-menu .success-message i {
-    font-size: 64px;
-    color: greenyellow;
-}
-
-.toggle-menu .success-message .bx.bxs-sad {
-    color: grey;
-}
-
-.toggle-menu .success-message p {
-    font-size: 16px;
-    font-weight: 300;
-    font-family: 'Cormorant Garamond', serif;
-    color: white;
-}
 
 
 /*============================================================================================
