@@ -1,59 +1,26 @@
-/*============================================================================================
-    # Wrapper Overlay
-============================================================================================*/
-// document.getElementById("toggle-content").addEventListener("click", function () {
-//     // Hide the overlay
-//     const overlay = document.getElementById("overlay");
-//     overlay.style.display = "none";
+document.addEventListener("DOMContentLoaded", function () {
+  // ============================================================
+  // Buka Kad Jemputan
+  // ============================================================
+  const toggleButton = document.getElementById("toggle-content");
+  const wrapper = document.querySelector(".wrapper");
+  const card = document.querySelector(".card");
+  const audioPlayer = document.getElementById("audio-player");
 
-    // Play the audio
-//    const audioPlayer = document.getElementById("audio-player");
-//    audioPlayer.play();  // Start playing the audio
-// });
+  if (toggleButton && wrapper && card) {
+    toggleButton.addEventListener("click", function () {
+      wrapper.classList.add("hidden");
 
-document.getElementById("toggle-content").addEventListener("click", function () {
-    var wrapper = document.querySelector(".wrapper"); // Change to wrapper
-    var card = document.querySelector(".card");
+      wrapper.addEventListener("transitionend", function () {
+        wrapper.style.display = "none";
+        card.style.display = "block";
+      }, { once: true });
 
-    // Add the 'hidden' class to start the fade out transition
-    wrapper.classList.add("hidden");
-
-    // Wait for the transition to complete
-    wrapper.addEventListener("transitionend", function () {
-        // After fade out is complete, hide the wrapper and show the card
-        wrapper.style.display = "none"; // Hide the wrapper
-        card.style.display = "block";   // Show the card
-    }, { once: true });
-
-    // Play the audio
-    const audioPlayer = document.getElementById("audio-player");
-    audioPlayer.play();  // Start playing the audio
-});
-
-  
-// ============================================================
-// Fungsi Luar DOMContentLoaded (boleh kekal di luar)
-// ============================================================
-function openGoogleMaps() {
-  const lat = 3.1927426;
-  const lng = 101.5504211;
-  window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, "_blank");
-}
-
-function openWaze() {
-  const lat = 3.1927426;
-  const lng = 101.5504211;
-  window.open(`https://waze.com/ul?ll=${lat},${lng}&navigate=yes`, "_blank");
-}
-
-function openWhatsApp(phoneNumber) {
-  window.open(`https://wa.me/${phoneNumber}`, "_blank");
-}
-
-function makePhoneCall(phoneNumber) {
-  window.location.href = `tel:${phoneNumber}`;
-}
-
+      if (audioPlayer) {
+        audioPlayer.play().catch(e => console.warn("Audio gagal dimainkan:", e));
+      }
+    });
+  }
 
   // ============================================================
   // Scroll Reveal
@@ -113,10 +80,8 @@ function makePhoneCall(phoneNumber) {
   }
 
   setInterval(createPetal, petalInterval);
-});
 
-
-// ============================================================
+  // ============================================================
   // Toggle Menu
   // ============================================================
   const toggleButtons = {
@@ -128,120 +93,126 @@ function makePhoneCall(phoneNumber) {
     "btn-hadir": "success-menu",
   };
 
-  // Function to toggle a menu open/close
-function toggleMenu(menuId, event) {
-    event.stopPropagation(); // Prevent click from propagating
+  function toggleMenu(menuId, event) {
+    event.stopPropagation();
     const menu = document.getElementById(menuId);
 
     if (menu.classList.contains('open')) {
-        menu.classList.remove('open'); // Close the menu
+      menu.classList.remove('open');
     } else {
-        // Close all other menus first
-        closeAllMenus();
-        menu.classList.add('open'); // Open the menu
+      closeAllMenus();
+      menu.classList.add('open');
     }
-}
+  }
 
-// Function to close all menus
-function closeAllMenus() {
+  function closeAllMenus() {
     for (const menuId of Object.values(toggleButtons)) {
-        const menu = document.getElementById(menuId);
-        if (menu.classList.contains('open')) {
-            menu.classList.remove('open'); // Close the menu
-        }
+      const menu = document.getElementById(menuId);
+      if (menu && menu.classList.contains('open')) {
+        menu.classList.remove('open');
+      }
     }
-}
+  }
 
-// Add click event listeners to all toggle buttons
-for (const [buttonId, menuId] of Object.entries(toggleButtons)) {
+  for (const [buttonId, menuId] of Object.entries(toggleButtons)) {
     const button = document.getElementById(buttonId);
-    button.addEventListener('click', (event) => toggleMenu(menuId, event));
-}
-
-// Add a global click handler to close all menus when clicking outside
-document.addEventListener('click', () => closeAllMenus());
-
-// Prevent clicks within menus from closing them
-for (const menuId of Object.values(toggleButtons)) {
-    const menu = document.getElementById(menuId);
-    menu.addEventListener('click', (event) => event.stopPropagation());
-}
-
-// Function to close a specific menu
-function closeMenu(menuId) {
-    const menu = document.getElementById(menuId);
-    if (menu.classList.contains('open')) {
-        menu.classList.remove('open'); // Close the menu
+    if (button) {
+      button.addEventListener('click', (event) => toggleMenu(menuId, event));
     }
-}
+  }
 
-// Add event listener for the close button inside the ucapan menu
-const closeButton = document.querySelector('#ucapan-menu .tutup');
-if (closeButton) {
+  document.addEventListener('click', () => closeAllMenus());
+
+  for (const menuId of Object.values(toggleButtons)) {
+    const menu = document.getElementById(menuId);
+    if (menu) {
+      menu.addEventListener('click', (event) => event.stopPropagation());
+    }
+  }
+
+  function closeMenu(menuId) {
+    const menu = document.getElementById(menuId);
+    if (menu && menu.classList.contains('open')) {
+      menu.classList.remove('open');
+    }
+  }
+
+  const closeButton = document.querySelector('#ucapan-menu .tutup');
+  if (closeButton) {
     closeButton.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent this from propagating and triggering other closures
-        closeMenu('ucapan-menu'); // Close the specific menu
+      event.stopPropagation();
+      closeMenu('ucapan-menu');
     });
-}
+  }
 
-// Function to open RSVP
-const kehadiranBtn = document.getElementById("kehadiran-btn");
-
-
-
-/** =====================================================
- *  Handle Kehadiran Count
-  ======================================================= */
-function incrementCount(endpoint, successMessage, iconClass, closeMenuId) {
+  // ============================================================
+  // Kehadiran Count (RSVP)
+  // ============================================================
+  function incrementCount(endpoint, successMessage, iconClass, closeMenuId) {
     fetch(endpoint, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'action=increment',
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'action=increment',
     })
     .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error("Request failed");
-        }
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Request failed");
+      }
     })
     .then(data => {
-        if (data.attend) {
-            // Display the success message
-            const successMenu = document.getElementById("success-menu");
-            successMenu.innerHTML = `<div class='success-message'><i class='${iconClass}'></i><p>${successMessage}</p></div>`;
-            successMenu.classList.add("open"); // Open the success menu
+      if (data.attend) {
+        const successMenu = document.getElementById("success-menu");
+        successMenu.innerHTML = `<div class='success-message'><i class='${iconClass}'></i><p>${successMessage}</p></div>`;
+        successMenu.classList.add("open");
 
-            // Optionally close other menu
-            if (closeMenuId) {
-                closeMenu(closeMenuId); // Close the specified menu
-            }
-        } else {
-            console.error("Increment count error:", data.error);
-            alert("Terjadi kesilapan: " + data.error);
-        }
+        if (closeMenuId) closeMenu(closeMenuId);
+      } else {
+        alert("Terjadi kesilapan: " + data.error);
+      }
     })
     .catch(error => {
-        console.error("AJAX error:", error);
-        alert("Error processing the request.");
+      console.error("AJAX error:", error);
+      alert("Error processing the request.");
     });
-}
+  }
 
-// Attach the click event to the "Hadir" and "Tidak Hadir" buttons
-document.getElementById("btn-hadir").onclick = function() {
-    incrementCount('count_hadir.php', "Kami menantikan kedatangan anda!", 'bx bxs-wink-smile', 'rsvp-menu'); // Success message and optionally close RSVP menu
-};
+  const btnHadir = document.getElementById("btn-hadir");
+  const btnTidakHadir = document.getElementById("btn-tidak-hadir");
 
-document.getElementById("btn-tidak-hadir").onclick = function() {
-    incrementCount('count_tidak_hadir.php', "Maaf, mungkin lain kali.", 'bx bxs-sad', 'rsvp-menu'); // Success message and optionally close RSVP menu
-};
+  if (btnHadir) {
+    btnHadir.onclick = function () {
+      incrementCount('count_hadir.php', "Kami menantikan kedatangan anda!", 'bx bxs-wink-smile', 'rsvp-menu');
+    };
+  }
 
+  if (btnTidakHadir) {
+    btnTidakHadir.onclick = function () {
+      incrementCount('count_tidak_hadir.php', "Maaf, mungkin lain kali.", 'bx bxs-sad', 'rsvp-menu');
+    };
+  }
 
+  // ============================================================
+  // Link ke Google Maps, Waze, WhatsApp, Telefon
+  // ============================================================
+  window.openGoogleMaps = function () {
+    const lat = 3.1927426;
+    const lng = 101.5504211;
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, "_blank");
+  };
 
+  window.openWaze = function () {
+    const lat = 3.1927426;
+    const lng = 101.5504211;
+    window.open(`https://waze.com/ul?ll=${lat},${lng}&navigate=yes`, "_blank");
+  };
 
+  window.openWhatsApp = function (phoneNumber) {
+    window.open(`https://wa.me/${phoneNumber}`, "_blank");
+  };
 
-/** =====================================================
- *  Image Carousel
-  ======================================================= */
+  window.makePhoneCall = function (phoneNumber) {
+    window.location.href = `tel:${phoneNumber}`;
+  };
+});
