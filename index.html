@@ -239,35 +239,24 @@
     </div>
 
     <div id="rsvp-menu" class="toggle-menu">
-  <div class="rsvp">
-    <h1>Borang RSVP</h1>
-    <form name="rsvp" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="rsvp" />
-      <p>
-        <label>Nama:<br />
-          <input type="text" name="nama" required />
-        </label>
-      </p>
-      <p>
-        <label>Kehadiran:<br />
-          <select name="kehadiran" required>
-            <option value="Hadir">Hadir</option>
-            <option value="Tidak Hadir">Tidak Hadir</option>
-          </select>
-        </label>
-      </p>
-      <p>
-        <label>Ucapan (jika ada):<br />
-          <textarea name="ucapan" rows="3"></textarea>
-        </label>
-      </p>
-      <p>
-        <button type="submit">Hantar</button>
-      </p>
-    </form>
-  </div>
-</div>
-           
+        <div class="rsvp">
+            <h1>Kehadiran</h1>
+            <form name="rsvp" method="POST" data-netlify="true">
+                <div style="display: flex; flex-direction: column; gap: 10px; padding: 1rem;">
+                    <input type="text" name="nama" placeholder="Nama Penuh" required />
+                    <input type="text" name="jumlah" placeholder="Jumlah Kehadiran (cth: 2)" required />
+                    <select name="status" required>
+                        <option value="">-- Sila Pilih Kehadiran --</option>
+                        <option value="Hadir">Hadir</option>
+                        <option value="Tidak Hadir">Tidak Hadir</option>
+                    </select>
+                    <textarea name="ucapan" rows="3" placeholder="Ucapan (Opsyenal)"></textarea>
+                    <button type="submit">Hantar RSVP</button>
+                </div>
+            </form>
+        </div>
+    </div>
+                   
     <div id="contact-menu" class="toggle-menu">
         <div class="contact">
             <h1>Hubungi</h1>
