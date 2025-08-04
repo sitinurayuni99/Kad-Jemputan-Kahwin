@@ -239,23 +239,25 @@
     </div>
 
     <div id="rsvp-menu" class="toggle-menu">
-        <div class="rsvp">
-            <h1>Kehadiran</h1>
-            <form name="rsvp" method="POST" data-netlify="true">
-                <div style="display: flex; flex-direction: column; gap: 10px; padding: 1rem;">
-                    <input type="text" name="nama" placeholder="Nama Penuh" required />
-                    <input type="text" name="jumlah" placeholder="Jumlah Kehadiran (cth: 2)" required />
-                    <select name="status" required>
-                        <option value="">-- Sila Pilih Kehadiran --</option>
-                        <option value="Hadir">Hadir</option>
-                        <option value="Tidak Hadir">Tidak Hadir</option>
-                    </select>
-                    <textarea name="ucapan" rows="3" placeholder="Ucapan (Opsyenal)"></textarea>
-                    <button type="submit">Hantar RSVP</button>
-                </div>
-            </form>
-        </div>
+      <div class="rsvp">
+        <h1>Kehadiran</h1>
+        <form name="rsvp" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="rsvp" />
+          <div style="display: flex; flex-direction: column; gap: 10px; padding: 1rem;">
+            <input type="text" name="nama" placeholder="Nama Penuh" required />
+            <input type="number" name="jumlah" placeholder="Jumlah Kehadiran (cth: 2)" required />
+            <select name="status" required>
+              <option value="">-- Sila Pilih Kehadiran --</option>
+              <option value="Hadir">Hadir</option>
+              <option value="Tidak Hadir">Tidak Hadir</option>
+            </select>
+            <textarea name="ucapan" rows="3" placeholder="Ucapan (Opsyenal)"></textarea>
+            <button type="submit">Hantar RSVP</button>
+          </div>
+        </form>
+      </div>
     </div>
+
                    
     <div id="contact-menu" class="toggle-menu">
         <div class="contact">
@@ -336,12 +338,22 @@
     <div id="success-menu" class="toggle-menu"></div>
 
 
-    <!-- Js Vendor -->
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/1.18.11/tsparticles.min.js"> </script>
+    <!-- Borang dummy untuk pastikan Netlify detect -->
+<form name="rsvp" netlify hidden>
+  <input type="text" name="nama" />
+  <input type="text" name="jumlah" />
+  <select name="status">
+    <option value="Hadir">Hadir</option>
+    <option value="Tidak Hadir">Tidak Hadir</option>
+  </select>
+  <textarea name="ucapan"></textarea>
+</form>
 
-    <!-- Custom Js -->
-    <script src="./js/main.js"></script>
+<!-- Js Vendor -->
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/1.18.11/tsparticles.min.js"> </script>
+
+<!-- Custom Js -->
+<script src="./js/main.js"></script>
 </body>
-
 </html>
