@@ -263,56 +263,90 @@
         </div>
     </div>
 
-    <div id="rsvp-menu" class="toggle-menu">
-      <div class="rsvp">
-        <h1>Kehadiran</h1>
-        <form id="rsvp-form">
-          <input type="hidden" name="form-name" value="rsvp" />
-          <div style="display: flex; flex-direction: column; gap: 10px; padding: 1rem;">
-            <input type="text" name="nama" placeholder="Nama Penuh" required />
-            <input type="number" name="jumlah" placeholder="Jumlah Kehadiran (cth: 2)" required />
-            <select name="status" required>
-              <option value="">-- Sila Pilih Kehadiran --</option>
-              <option value="Hadir">Hadir</option>
-              <option value="Tidak Hadir">Tidak Hadir</option>
-            </select>
-            <textarea name="ucapan" rows="3" placeholder="Ucapan (Opsyenal)"></textarea>
-            <button type="submit">Hantar RSVP</button>
-          </div>
-        </form>
-      </div>
+      <!-- RSVP Section -->
+  <div id="rsvp-menu" class="toggle-menu">
+    <div class="rsvp">
+      <h1>RSVP Kehadiran</h1>
+      <form id="rsvp-form">
+        <div class="form-wrapper">
+          <input type="text" name="nama" placeholder="Nama Penuh" required />
+          <input type="number" name="jumlah" placeholder="Jumlah Kehadiran" required />
+          <select name="status" required>
+            <option value="">-- Kehadiran --</option>
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+          </select>
+          <textarea name="ucapan" rows="3" placeholder="Ucapan (jika ada)"></textarea>
+          <button type="submit">Hantar</button>
+        </div>
+      </form>
+      <div id="rsvp-feedback" style="text-align:center; margin-top: 1rem;"></div>
     </div>
-    
-        <script>
-        const form = document.getElementById("rsvp-form");
-        
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-        
-          const data = {
-            nama: form.nama.value,
-            jumlah: form.jumlah.value,
-            status: form.status.value,
-            ucapan: form.ucapan.value,
-          };
-        
-          fetch("https://script.google.com/macros/s/AKfycbxl0Ukk4QfqeggIa0XJ_38j7qn4dXmV-8BAwyRnhIDJHms0g3xx62MYhs6V5PsLs9J3aA/exec", {
-            method: "POST",
-            body: JSON.stringify(data),
-          })
-            .then((res) => res.json())
-            .then((res) => {
-              if (res.result === "success") {
-                alert("Terima kasih! RSVP berjaya dihantar.");
-                form.reset();
-                loadUcapan(); // Muat semula ucapan
-              } else {
-                alert("Maaf, berlaku masalah.");
-              }
-            });
-        });
-        </script>
+  </div>
 
+  <!-- Paparan Ucapan -->
+  <div class="ucapan reveal fade-bottom">
+    <div class="container">
+      <h2 style="text-align:center;">Ucapan Tetamu</h2>
+      <div id="ucapan-list" style="max-height: 300px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
+  <!-- Skrip tarik & hantar data -->
+  <script>
+    const form = document.getElementById("rsvp-form");
+    const feedback = document.getElementById("rsvp-feedback");
+    const ucapanContainer = document.getElementById("ucapan-list");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const data = {
+        nama: form.nama.value,
+        jumlah: form.jumlah.value,
+        status: form.status.value,
+        ucapan: form.ucapan.value,
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbxl0Ukk4QfqeggIa0XJ_38j7qn4dXmV-8BAwyRnhIDJHms0g3xx62MYhs6V5PsLs9J3aA/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.result === "success") {
+            feedback.innerHTML = `<p style="color:green;">Terima kasih! RSVP anda telah diterima 🙏</p>`;
+            form.reset();
+            loadUcapan();
+          } else {
+            feedback.innerHTML = `<p style="color:red;">Maaf, berlaku masalah.</p>`;
+          }
+        });
+    });
+
+    function loadUcapan() {
+      fetch("https://script.google.com/macros/s/AKfycbxl0Ukk4QfqeggIa0XJ_38j7qn4dXmV-8BAwyRnhIDJHms0g3xx62MYhs6V5PsLs9J3aA/exec")
+        .then((res) => res.json())
+        .then((data) => {
+          ucapanContainer.innerHTML = "";
+          data.reverse().forEach(item => {
+            if (item.ucapan) {
+              ucapanContainer.innerHTML += `
+                <div style="padding: 1rem; margin-bottom: 1rem; background: #f3f3f3; border-left: 4px solid #aaa; border-radius: 6px;">
+                  <strong>${item.nama}</strong><br/>
+                  <em>${item.ucapan}</em>
+                </div>
+              `;
+            }
+          });
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadUcapan();
+      setInterval(loadUcapan, 30000); // auto-refresh ucapan setiap 30 saat
+    });
+  </script>
                    
     <div id="contact-menu" class="toggle-menu">
         <div class="contact">
