@@ -27,16 +27,30 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-      // 👉 Scroll ke .intro bila gambar diklik
+      // 👉 Scroll ke .intro bila gambar 1.png diklik
       const scrollImage = document.getElementById("scroll-image");
       if (scrollImage) {
         scrollImage.addEventListener("click", function () {
+          const wrapper = document.querySelector(".wrapper");
+          const card = document.querySelector(".card");
           const introSection = document.getElementById("intro-section");
+          const audioPlayer = document.getElementById("audio-player");
+      
+          if (wrapper && card) {
+            wrapper.style.display = "none";
+            card.style.display = "block";
+          }
+      
+          if (audioPlayer) {
+            audioPlayer.play().catch(e => console.warn("Audio gagal dimainkan:", e));
+          }
+      
           if (introSection) {
             introSection.scrollIntoView({ behavior: "smooth" });
           }
         });
       }
+
 
   // ============================================================
   // Scroll Reveal
