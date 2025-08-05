@@ -19,8 +19,24 @@ document.addEventListener("DOMContentLoaded", function () {
       if (audioPlayer) {
         audioPlayer.play().catch(e => console.warn("Audio gagal dimainkan:", e));
       }
+
+       // 👉 Tunjuk gambar 1.png selepas tekan butang "Buka"
+      const scrollImage = document.getElementById("scroll-image");
+      if (scrollImage) {
+        scrollImage.style.display = "block";
+      }
     });
   }
+      // 👉 Scroll ke .intro bila gambar diklik
+      const scrollImage = document.getElementById("scroll-image");
+      if (scrollImage) {
+        scrollImage.addEventListener("click", function () {
+          const introSection = document.getElementById("intro-section");
+          if (introSection) {
+            introSection.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      }
 
   // ============================================================
   // Scroll Reveal
