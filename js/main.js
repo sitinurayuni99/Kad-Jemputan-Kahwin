@@ -15,14 +15,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // Bila klik "Buka"
   if (toggleButton && overlay && card) {
     toggleButton.addEventListener("click", function () {
-      overlay.style.display = "none"; // hanya tutup overlay, bukan wrapper
-      card.style.display = "block";   // tunjuk kad
-  
+      overlay.style.display = "none";        // ✅ tutup overlay
+      card.style.display = "block";          // ✅ tunjuk kad
+      document.body.style.overflow = "auto"; // ✅ benarkan scroll (penting)
+    
       if (audioPlayer) {
         audioPlayer.play().catch(e => console.warn("Audio gagal dimainkan:", e));
       }
     });
-  }
+
 
   // ============================================================
   // Scroll Reveal
