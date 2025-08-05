@@ -7,21 +7,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const card = document.querySelector(".card");
   const audioPlayer = document.getElementById("audio-player");
 
+  // Sembunyikan kad semasa mula
+  if (card) {
+    card.style.display = "none";
+  }
+
+  // Bila klik "Buka"
   if (toggleButton && wrapper && card) {
     toggleButton.addEventListener("click", function () {
-      wrapper.classList.add("hidden");
-
-      wrapper.addEventListener("transitionend", function () {
-        wrapper.style.display = "none";
-        card.style.display = "block";
-      }, { once: true });
+      wrapper.style.display = "none";
+      card.style.display = "block";
 
       if (audioPlayer) {
         audioPlayer.play().catch(e => console.warn("Audio gagal dimainkan:", e));
       }
     });
   }
-
 
   // ============================================================
   // Scroll Reveal
