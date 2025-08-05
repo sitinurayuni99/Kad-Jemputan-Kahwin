@@ -3,21 +3,21 @@ document.addEventListener("DOMContentLoaded", function () {
   // Buka Kad Jemputan
   // ============================================================
   const toggleButton = document.getElementById("toggle-content");
-  const wrapper = document.querySelector(".wrapper");
+  const overlay = document.getElementById("overlay");
   const card = document.querySelector(".card");
   const audioPlayer = document.getElementById("audio-player");
-
+  
   // Sembunyikan kad semasa mula
   if (card) {
     card.style.display = "none";
   }
-
+  
   // Bila klik "Buka"
-  if (toggleButton && wrapper && card) {
+  if (toggleButton && overlay && card) {
     toggleButton.addEventListener("click", function () {
-      wrapper.style.display = "none";
-      card.style.display = "block";
-
+      overlay.style.display = "none"; // hanya tutup overlay, bukan wrapper
+      card.style.display = "block";   // tunjuk kad
+  
       if (audioPlayer) {
         audioPlayer.play().catch(e => console.warn("Audio gagal dimainkan:", e));
       }
